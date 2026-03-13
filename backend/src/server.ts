@@ -26,7 +26,7 @@ app.post("/clientes", async (req, res) => {
       email,
     },
   });
-  res.json;
+  res.status(201).json(novoCliente);
 });
 
 //3. Pesquisar por nome
