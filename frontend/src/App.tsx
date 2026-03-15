@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { 
   UserPlus, Users, Trash2, Search, UserCircle, 
-  FileText, Calendar, Home, ArrowLeft, ClipboardList 
+  FileText, Calendar, ArrowLeft 
 } from 'lucide-react';
 
 const API_URL = 'http://localhost:3001/clientes';
@@ -15,7 +15,7 @@ interface Cliente {
   email?: string;
 }
 
-function App( ) {
+function App() {
   // Controle de Navegação: 'home', 'novo', 'listar', 'agendar'
   const [tela, setTela] = useState<'home' | 'novo' | 'listar' | 'agendar'>('home');
   
@@ -25,18 +25,32 @@ function App( ) {
   const [email, setEmail] = useState('');
   const [busca, setBusca] = useState('');
 
+  // 1. ESTADO RECUPERADO: Controle de erro
+  const [mensagemErro, setMensagemErro] = useState('');
+
   // Funções de Lógica
   const listarClientes = async () => {
     const response = await axios.get(API_URL);
     setClientes(response.data);
   };
 
+  // 2. FUNÇÃO RECUPERADA: try...catch para pegar o erro do backend
   const adicionarCliente = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post(API_URL, { nome, telefone, email });
-    setNome(''); setTelefone(''); setEmail('');
-    alert("Cliente cadastrado com sucesso!");
-    setTela('home'); // Volta para a home após cadastrar
+    setMensagemErro(''); // Limpa erro anterior
+
+    try {
+      await axios.post(API_URL, { nome, telefone, email });
+      setNome(''); setTelefone(''); setEmail('');
+      alert("Cliente cadastrado com sucesso!");
+      setTela('home'); // Volta para a home após cadastrar
+    } catch (error: any) {
+      if (error.response && error.response.data && error.response.data.erro) {
+        setMensagemErro(error.response.data.erro);
+      } else {
+        setMensagemErro("Erro ao conectar com o backend. O servidor está rodando?");
+      }
+    }
   };
 
   const removerCliente = async (id: number) => {
@@ -52,15 +66,19 @@ function App( ) {
   };
 
   const exibirRelatorio = async () => {
-    const response = await axios.get(RELATORIO_URL);
-    const r = response.data;
-    alert(`--- ${r.titulo} ---\nTotal: ${r.quantidadeElementos}\nData: ${r.dataGeracao}`);
+    try {
+      const response = await axios.get(RELATORIO_URL);
+      const r = response.data;
+      alert(`--- ${r.titulo} ---\nTotal: ${r.quantidadeElementos}\nData: ${r.dataGeracao}`);
+    } catch {
+      alert("Erro ao gerar relatório. Rota não encontrada ou servidor offline.");
+    }
   };
 
   // --- COMPONENTE DA TELA HOME ---
   const TelaHome = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-      <button onClick={() => setTela('novo')} className="bg-white p-8 rounded-3xl shadow-sm border-2 border-transparent hover:border-indigo-500 transition-all flex flex-col items-center gap-4 group">
+      <button onClick={() => { setTela('novo'); setMensagemErro(''); }} className="bg-white p-8 rounded-3xl shadow-sm border-2 border-transparent hover:border-indigo-500 transition-all flex flex-col items-center gap-4 group">
         <div className="bg-indigo-100 p-4 rounded-2xl text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
           <UserPlus size={32} />
         </div>
@@ -118,6 +136,14 @@ function App( ) {
               <UserPlus /> Cadastrar Cliente
             </h2>
             <form onSubmit={adicionarCliente} className="flex flex-col gap-5">
+              
+              {/* 3. ALERTA RECUPERADO: Só aparece se houver erro */}
+              {mensagemErro && (
+                <div className="bg-red-50 border-l-4 border-red-500 p-3 rounded-r-lg">
+                  <p className="text-red-700 text-sm font-medium">{mensagemErro}</p>
+                </div>
+              )}
+
               <input className="border-2 border-slate-100 p-3 rounded-xl outline-none focus:border-indigo-500 transition" placeholder="Nome" value={nome} onChange={e => setNome(e.target.value)} required />
               <input className="border-2 border-slate-100 p-3 rounded-xl outline-none focus:border-indigo-500 transition" placeholder="Telefone" value={telefone} onChange={e => setTelefone(e.target.value)} required />
               <input className="border-2 border-slate-100 p-3 rounded-xl outline-none focus:border-indigo-500 transition" placeholder="E-mail" type="email" value={email} onChange={e => setEmail(e.target.value)} />
