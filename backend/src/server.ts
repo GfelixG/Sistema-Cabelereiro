@@ -17,16 +17,54 @@ app.get("/clientes", async (req, res) => {
 });
 
 // 2. Inserir um novo cliente
-app.post("/clientes", async (req, res) => {
+app.post("/clientes", async (req: Request, res: Response) => {
   const { nome, telefone, email } = req.body;
-  const novoCliente = await prisma.client.create({
-    data: {
-      nome,
-      telefone,
-      email,
-    },
-  });
-  res.status(201).json(novoCliente);
+
+  try {
+    const novoCliente = await prisma.client.create({
+      data: {
+        nome,
+        telefone,
+        email,
+      },
+    });
+    
+    return res.status(201).json(novoCliente);
+
+  } catch (error: any) { // Usamos 'any' aqui para facilitar a leitura das propriedades do erro
+    
+    // Verifica se o erro é de duplicidade (P2002)
+    if (error?.code === 'P2002') {
+      
+      // O Prisma guarda os campos que causaram o erro dentro de meta.target
+      const camposDuplicados = error.meta?.target;
+      
+      // Checa se o erro foi no e-mail
+      if (camposDuplicados?.includes('email')) {
+        return res.status(400).json({ 
+          erro: "Já existe um cliente cadastrado com este e-mail." 
+        });
+      }
+      
+      // Checa se o erro foi no telefone
+      if (camposDuplicados?.includes('telefone')) {
+        return res.status(400).json({ 
+          erro: "Já existe um cliente cadastrado com este telefone." 
+        });
+      }
+
+      // Caso seja algum outro campo único que não previmos
+      return res.status(400).json({ 
+        erro: "Um ou mais dados informados já estão cadastrados." 
+      });
+    }
+
+    // Se for um erro diferente de duplicidade, aí sim ele avisa no terminal
+    console.error("Erro interno ao criar cliente:", error);
+    return res.status(500).json({ 
+      erro: "Erro interno do servidor." 
+    });
+  }
 });
 
 //3. Pesquisar por nome
@@ -72,5 +110,5 @@ app.get("/clientes/:id", async (req, res) => {
 // Iniciar servidor
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
