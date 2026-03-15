@@ -9,20 +9,21 @@ datasource db {
 }
 
 model Client {
-  id    Int @id @default(autoincrement())
-  nome  String @db.VarChar(100)
-  telefone  String @unique @db.VarChar(15)
-  email   String? @unique @db.VarChar(100)
-  dataCadastro DateTime @map("data_cadastro") @default(now()) @db.DateTime(0)
+  id           Int           @id @default(autoincrement())
+  nome         String        @db.VarChar(100)
+  telefone     String        @unique @db.VarChar(15)
+  email        String?       @unique @db.VarChar(100)
+  dataCadastro DateTime      @default(now()) @map("data_cadastro") @db.DateTime(0)
+  agendamentos Agendamento[]
 
   @@map("clientes")
 }
 
 model Profissional {
-  id           Int           @id @default(autoincrement())
-  nome         String
+  id            Int           @id @default(autoincrement())
+  nome          String
   especialidade String
-  agendamentos Agendamento[]
+  agendamentos  Agendamento[]
 }
 
 model Servico {
@@ -33,14 +34,13 @@ model Servico {
 }
 
 model Agendamento {
-  id             Int          @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   dataHora       DateTime
   clienteId      Int
   profissionalId Int
   servicoId      Int
-  
+
   cliente      Client       @relation(fields: [clienteId], references: [id])
   profissional Profissional @relation(fields: [profissionalId], references: [id])
   servico      Servico      @relation(fields: [servicoId], references: [id])
 }
-
