@@ -1,9 +1,17 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { ClienteGerenciador } from './ClienteGerenciador';
+import { ClienteGerenciador } from './clienteGerenciador';
+import { ProfissionalGerenciador, ServicoGerenciador, AgendamentoGerenciador } from './gerenciadores';
+import { PrismaClient } from './generated';
+
 
 const app = express();
+const prisma = new PrismaClient();
 const gerenciador = new ClienteGerenciador(); // Instanciando a classe gerenciadora
+const profissionalGerenciador = new ProfissionalGerenciador();
+const servicoGerenciador = new ServicoGerenciador();
+const agendamentoGerenciador = new AgendamentoGerenciador();
+
 
 app.use(cors());
 app.use(express.json());
@@ -23,7 +31,7 @@ app.post("/clientes", async (req: Request, res: Response) => {
       data: {
         nome,
         telefone,
-        email,
+        email: email || null,
       },
     });
     
@@ -80,6 +88,60 @@ app.delete('/clientes/:id', async (req, res) => {
 app.get('/relatorio', async (req, res) => {
   const relatorio = await gerenciador.gerarRelatorio();
   res.json(relatorio);
+});
+
+// --- ROTAS DE PROFISSIONAIS ---
+app.get('/profissionais', async (req, res) => {
+  const lista = await profissionalGerenciador.listarTodos();
+  res.json(lista);
+});
+
+app.post('/profissionais', async (req, res) => {
+  const { nome, especialidade } = req.body;
+  try {
+    const novo = await profissionalGerenciador.inserir(nome, especialidade);
+    res.status(201).json(novo);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao criar profissional." });
+  }
+});
+
+// --- ROTAS DE SERVIÇOS ---
+app.get('/servicos', async (req, res) => {
+  const lista = await servicoGerenciador.listarTodos();
+  res.json(lista);
+});
+
+app.post('/servicos', async (req, res) => {
+  const { descricao, preco } = req.body;
+  try {
+    const novo = await servicoGerenciador.inserir(descricao, Number(preco));
+    res.status(201).json(novo);
+  } catch (error) {
+    res.status(500).json({ erro: "Erro ao criar serviço." });
+  }
+});
+
+// --- ROTAS DE AGENDAMENTOS ---
+app.get('/agendamentos', async (req, res) => {
+  const lista = await agendamentoGerenciador.listarRelatorio();
+  res.json(lista);
+});
+
+app.post('/agendamentos', async (req, res) => {
+  const { clienteId, profissionalId, servicoId, dataHora } = req.body;
+  try {
+    const novo = await agendamentoGerenciador.agendar(
+      Number(clienteId), 
+      Number(profissionalId), 
+      Number(servicoId), 
+      dataHora
+    );
+    res.status(201).json(novo);
+  } catch (error: any) {
+    console.error("ERRO COMPLETO:", error);
+    res.status(500).json({ erro: "Erro ao criar agendamento.", detalhes: error.message || error });
+  }
 });
 
 const PORT = 3001;

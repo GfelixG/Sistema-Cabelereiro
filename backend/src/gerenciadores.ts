@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from './generated';
 const prisma = new PrismaClient();
 
 export class ProfissionalGerenciador {
@@ -35,7 +35,7 @@ export class AgendamentoGerenciador {
         dataHora: new Date(data)
       },
       include: { // Traz os dados relacionados no retorno
-        cliente: true,
+        clientes: true,
         profissional: true,
         servico: true
       }
@@ -45,7 +45,7 @@ export class AgendamentoGerenciador {
   async listarRelatorio() {
     return await prisma.agendamento.findMany({
       include: {
-        cliente: { select: { nome: true } },
+        clientes: { select: { nome: true } },
         profissional: { select: { nome: true } },
         servico: { select: { descricao: true, preco: true } }
       }

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from './generated';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +10,7 @@ export class ClienteGerenciador {
   // 1. Método para INSERIR
   async inserir(nome: string, telefone: string, email?: string) {
     return await prisma.client.create({
-      data: { nome, telefone, email }
+      data: { nome, telefone, email: email || null }
     });
   }
 
@@ -18,7 +18,7 @@ export class ClienteGerenciador {
   async alterar(id: number, nome: string, telefone: string, email?: string) {
     return await prisma.client.update({
       where: { id },
-      data: { nome, telefone, email }
+      data: { nome, telefone, email: email || null }
     });
   }
 
@@ -50,15 +50,31 @@ export class ClienteGerenciador {
     });
   }
 
-  // ITEM 6: Método para GERAR RELATÓRIO
   async gerarRelatorio() {
-    const total = await prisma.client.count();
-    const lista = await this.listarTodos();
+    const totalClientes = await prisma.client.count();
+    const agendamentos = await prisma.agendamento.findMany({
+      include: { servico: true }
+    });
     
+    // Calcula faturamento total
+    const faturamentoTotal = agendamentos.reduce((acc, ag) => acc + ag.servico.preco, 0);
+    
+    // Agrupa serviços
+    const servicosCount: Record<string, number> = {};
+    agendamentos.forEach(ag => {
+      const desc = ag.servico.descricao;
+      servicosCount[desc] = (servicosCount[desc] || 0) + 1;
+    });
+    
+    const servicosMaisPedidos = Object.entries(servicosCount).map(([name, value]) => ({
+      name, value
+    })).sort((a, b) => b.value - a.value);
+
     return {
-      titulo: "Relatório de Clientes - Cabeleireiro",
-      quantidadeElementos: total,
-      clientes: lista,
+      titulo: "Relatório de Agendamentos - Cabeleireiro",
+      totalClientes,
+      faturamentoTotal,
+      servicosMaisPedidos,
       dataGeracao: new Date().toLocaleString()
     };
   }

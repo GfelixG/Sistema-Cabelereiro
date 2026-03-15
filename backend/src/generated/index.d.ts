@@ -18,6 +18,21 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Client = $Result.DefaultSelection<Prisma.$ClientPayload>
+/**
+ * Model Profissional
+ * 
+ */
+export type Profissional = $Result.DefaultSelection<Prisma.$ProfissionalPayload>
+/**
+ * Model Servico
+ * 
+ */
+export type Servico = $Result.DefaultSelection<Prisma.$ServicoPayload>
+/**
+ * Model Agendamento
+ * 
+ */
+export type Agendamento = $Result.DefaultSelection<Prisma.$AgendamentoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -146,6 +161,36 @@ export class PrismaClient<
     * ```
     */
   get client(): Prisma.ClientDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.profissional`: Exposes CRUD operations for the **Profissional** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Profissionals
+    * const profissionals = await prisma.profissional.findMany()
+    * ```
+    */
+  get profissional(): Prisma.ProfissionalDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.servico`: Exposes CRUD operations for the **Servico** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Servicos
+    * const servicos = await prisma.servico.findMany()
+    * ```
+    */
+  get servico(): Prisma.ServicoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.agendamento`: Exposes CRUD operations for the **Agendamento** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Agendamentos
+    * const agendamentos = await prisma.agendamento.findMany()
+    * ```
+    */
+  get agendamento(): Prisma.AgendamentoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -587,7 +632,10 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Client: 'Client'
+    Client: 'Client',
+    Profissional: 'Profissional',
+    Servico: 'Servico',
+    Agendamento: 'Agendamento'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -606,7 +654,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "client"
+      modelProps: "client" | "profissional" | "servico" | "agendamento"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -673,6 +721,204 @@ export namespace Prisma {
           count: {
             args: Prisma.ClientCountArgs<ExtArgs>
             result: $Utils.Optional<ClientCountAggregateOutputType> | number
+          }
+        }
+      }
+      Profissional: {
+        payload: Prisma.$ProfissionalPayload<ExtArgs>
+        fields: Prisma.ProfissionalFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProfissionalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProfissionalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>
+          }
+          findFirst: {
+            args: Prisma.ProfissionalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProfissionalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>
+          }
+          findMany: {
+            args: Prisma.ProfissionalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>[]
+          }
+          create: {
+            args: Prisma.ProfissionalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>
+          }
+          createMany: {
+            args: Prisma.ProfissionalCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ProfissionalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>
+          }
+          update: {
+            args: Prisma.ProfissionalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProfissionalDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProfissionalUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProfissionalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfissionalPayload>
+          }
+          aggregate: {
+            args: Prisma.ProfissionalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProfissional>
+          }
+          groupBy: {
+            args: Prisma.ProfissionalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProfissionalGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProfissionalCountArgs<ExtArgs>
+            result: $Utils.Optional<ProfissionalCountAggregateOutputType> | number
+          }
+        }
+      }
+      Servico: {
+        payload: Prisma.$ServicoPayload<ExtArgs>
+        fields: Prisma.ServicoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ServicoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ServicoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>
+          }
+          findFirst: {
+            args: Prisma.ServicoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ServicoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>
+          }
+          findMany: {
+            args: Prisma.ServicoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>[]
+          }
+          create: {
+            args: Prisma.ServicoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>
+          }
+          createMany: {
+            args: Prisma.ServicoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ServicoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>
+          }
+          update: {
+            args: Prisma.ServicoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>
+          }
+          deleteMany: {
+            args: Prisma.ServicoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ServicoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ServicoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicoPayload>
+          }
+          aggregate: {
+            args: Prisma.ServicoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateServico>
+          }
+          groupBy: {
+            args: Prisma.ServicoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ServicoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ServicoCountArgs<ExtArgs>
+            result: $Utils.Optional<ServicoCountAggregateOutputType> | number
+          }
+        }
+      }
+      Agendamento: {
+        payload: Prisma.$AgendamentoPayload<ExtArgs>
+        fields: Prisma.AgendamentoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AgendamentoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AgendamentoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>
+          }
+          findFirst: {
+            args: Prisma.AgendamentoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AgendamentoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>
+          }
+          findMany: {
+            args: Prisma.AgendamentoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>[]
+          }
+          create: {
+            args: Prisma.AgendamentoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>
+          }
+          createMany: {
+            args: Prisma.AgendamentoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AgendamentoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>
+          }
+          update: {
+            args: Prisma.AgendamentoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>
+          }
+          deleteMany: {
+            args: Prisma.AgendamentoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AgendamentoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AgendamentoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AgendamentoPayload>
+          }
+          aggregate: {
+            args: Prisma.AgendamentoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAgendamento>
+          }
+          groupBy: {
+            args: Prisma.AgendamentoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AgendamentoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AgendamentoCountArgs<ExtArgs>
+            result: $Utils.Optional<AgendamentoCountAggregateOutputType> | number
           }
         }
       }
@@ -773,6 +1019,9 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     client?: ClientOmit
+    profissional?: ProfissionalOmit
+    servico?: ServicoOmit
+    agendamento?: AgendamentoOmit
   }
 
   /* Types for Logging */
@@ -847,6 +1096,98 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type ClientCountOutputType
+   */
+
+  export type ClientCountOutputType = {
+    agendamentos: number
+  }
+
+  export type ClientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | ClientCountOutputTypeCountAgendamentosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClientCountOutputType without action
+   */
+  export type ClientCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClientCountOutputType
+     */
+    select?: ClientCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClientCountOutputType without action
+   */
+  export type ClientCountOutputTypeCountAgendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgendamentoWhereInput
+  }
+
+
+  /**
+   * Count Type ProfissionalCountOutputType
+   */
+
+  export type ProfissionalCountOutputType = {
+    agendamentos: number
+  }
+
+  export type ProfissionalCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | ProfissionalCountOutputTypeCountAgendamentosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProfissionalCountOutputType without action
+   */
+  export type ProfissionalCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfissionalCountOutputType
+     */
+    select?: ProfissionalCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProfissionalCountOutputType without action
+   */
+  export type ProfissionalCountOutputTypeCountAgendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgendamentoWhereInput
+  }
+
+
+  /**
+   * Count Type ServicoCountOutputType
+   */
+
+  export type ServicoCountOutputType = {
+    agendamentos: number
+  }
+
+  export type ServicoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | ServicoCountOutputTypeCountAgendamentosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ServicoCountOutputType without action
+   */
+  export type ServicoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServicoCountOutputType
+     */
+    select?: ServicoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ServicoCountOutputType without action
+   */
+  export type ServicoCountOutputTypeCountAgendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgendamentoWhereInput
+  }
 
 
   /**
@@ -1051,6 +1392,8 @@ export namespace Prisma {
     telefone?: boolean
     email?: boolean
     dataCadastro?: boolean
+    agendamentos?: boolean | Client$agendamentosArgs<ExtArgs>
+    _count?: boolean | ClientCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["client"]>
 
 
@@ -1064,10 +1407,16 @@ export namespace Prisma {
   }
 
   export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "telefone" | "email" | "dataCadastro", ExtArgs["result"]["client"]>
+  export type ClientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | Client$agendamentosArgs<ExtArgs>
+    _count?: boolean | ClientCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $ClientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Client"
-    objects: {}
+    objects: {
+      agendamentos: Prisma.$AgendamentoPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nome: string
@@ -1414,6 +1763,7 @@ export namespace Prisma {
    */
   export interface Prisma__ClientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    agendamentos<T extends Client$agendamentosArgs<ExtArgs> = {}>(args?: Subset<T, Client$agendamentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1465,6 +1815,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * Filter, which Client to fetch.
      */
     where: ClientWhereUniqueInput
@@ -1483,6 +1837,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * Filter, which Client to fetch.
      */
     where: ClientWhereUniqueInput
@@ -1500,6 +1858,10 @@ export namespace Prisma {
      * Omit specific fields from the Client
      */
     omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
     /**
      * Filter, which Client to fetch.
      */
@@ -1549,6 +1911,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * Filter, which Client to fetch.
      */
     where?: ClientWhereInput
@@ -1597,6 +1963,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * Filter, which Clients to fetch.
      */
     where?: ClientWhereInput
@@ -1640,6 +2010,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * The data needed to create a Client.
      */
     data: XOR<ClientCreateInput, ClientUncheckedCreateInput>
@@ -1668,6 +2042,10 @@ export namespace Prisma {
      * Omit specific fields from the Client
      */
     omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
     /**
      * The data needed to update a Client.
      */
@@ -1709,6 +2087,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * The filter to search for the Client to update in case it exists.
      */
     where: ClientWhereUniqueInput
@@ -1735,6 +2117,10 @@ export namespace Prisma {
      */
     omit?: ClientOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
      * Filter which Client to delete.
      */
     where: ClientWhereUniqueInput
@@ -1755,6 +2141,30 @@ export namespace Prisma {
   }
 
   /**
+   * Client.agendamentos
+   */
+  export type Client$agendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    where?: AgendamentoWhereInput
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    cursor?: AgendamentoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AgendamentoScalarFieldEnum | AgendamentoScalarFieldEnum[]
+  }
+
+  /**
    * Client without action
    */
   export type ClientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1766,6 +2176,2931 @@ export namespace Prisma {
      * Omit specific fields from the Client
      */
     omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Profissional
+   */
+
+  export type AggregateProfissional = {
+    _count: ProfissionalCountAggregateOutputType | null
+    _avg: ProfissionalAvgAggregateOutputType | null
+    _sum: ProfissionalSumAggregateOutputType | null
+    _min: ProfissionalMinAggregateOutputType | null
+    _max: ProfissionalMaxAggregateOutputType | null
+  }
+
+  export type ProfissionalAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ProfissionalSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ProfissionalMinAggregateOutputType = {
+    id: number | null
+    nome: string | null
+    especialidade: string | null
+  }
+
+  export type ProfissionalMaxAggregateOutputType = {
+    id: number | null
+    nome: string | null
+    especialidade: string | null
+  }
+
+  export type ProfissionalCountAggregateOutputType = {
+    id: number
+    nome: number
+    especialidade: number
+    _all: number
+  }
+
+
+  export type ProfissionalAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ProfissionalSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ProfissionalMinAggregateInputType = {
+    id?: true
+    nome?: true
+    especialidade?: true
+  }
+
+  export type ProfissionalMaxAggregateInputType = {
+    id?: true
+    nome?: true
+    especialidade?: true
+  }
+
+  export type ProfissionalCountAggregateInputType = {
+    id?: true
+    nome?: true
+    especialidade?: true
+    _all?: true
+  }
+
+  export type ProfissionalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Profissional to aggregate.
+     */
+    where?: ProfissionalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profissionals to fetch.
+     */
+    orderBy?: ProfissionalOrderByWithRelationInput | ProfissionalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProfissionalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profissionals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profissionals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Profissionals
+    **/
+    _count?: true | ProfissionalCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProfissionalAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProfissionalSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProfissionalMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProfissionalMaxAggregateInputType
+  }
+
+  export type GetProfissionalAggregateType<T extends ProfissionalAggregateArgs> = {
+        [P in keyof T & keyof AggregateProfissional]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProfissional[P]>
+      : GetScalarType<T[P], AggregateProfissional[P]>
+  }
+
+
+
+
+  export type ProfissionalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProfissionalWhereInput
+    orderBy?: ProfissionalOrderByWithAggregationInput | ProfissionalOrderByWithAggregationInput[]
+    by: ProfissionalScalarFieldEnum[] | ProfissionalScalarFieldEnum
+    having?: ProfissionalScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProfissionalCountAggregateInputType | true
+    _avg?: ProfissionalAvgAggregateInputType
+    _sum?: ProfissionalSumAggregateInputType
+    _min?: ProfissionalMinAggregateInputType
+    _max?: ProfissionalMaxAggregateInputType
+  }
+
+  export type ProfissionalGroupByOutputType = {
+    id: number
+    nome: string
+    especialidade: string
+    _count: ProfissionalCountAggregateOutputType | null
+    _avg: ProfissionalAvgAggregateOutputType | null
+    _sum: ProfissionalSumAggregateOutputType | null
+    _min: ProfissionalMinAggregateOutputType | null
+    _max: ProfissionalMaxAggregateOutputType | null
+  }
+
+  type GetProfissionalGroupByPayload<T extends ProfissionalGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProfissionalGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProfissionalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProfissionalGroupByOutputType[P]>
+            : GetScalarType<T[P], ProfissionalGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProfissionalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nome?: boolean
+    especialidade?: boolean
+    agendamentos?: boolean | Profissional$agendamentosArgs<ExtArgs>
+    _count?: boolean | ProfissionalCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profissional"]>
+
+
+
+  export type ProfissionalSelectScalar = {
+    id?: boolean
+    nome?: boolean
+    especialidade?: boolean
+  }
+
+  export type ProfissionalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "especialidade", ExtArgs["result"]["profissional"]>
+  export type ProfissionalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | Profissional$agendamentosArgs<ExtArgs>
+    _count?: boolean | ProfissionalCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ProfissionalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Profissional"
+    objects: {
+      agendamentos: Prisma.$AgendamentoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nome: string
+      especialidade: string
+    }, ExtArgs["result"]["profissional"]>
+    composites: {}
+  }
+
+  type ProfissionalGetPayload<S extends boolean | null | undefined | ProfissionalDefaultArgs> = $Result.GetResult<Prisma.$ProfissionalPayload, S>
+
+  type ProfissionalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProfissionalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProfissionalCountAggregateInputType | true
+    }
+
+  export interface ProfissionalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Profissional'], meta: { name: 'Profissional' } }
+    /**
+     * Find zero or one Profissional that matches the filter.
+     * @param {ProfissionalFindUniqueArgs} args - Arguments to find a Profissional
+     * @example
+     * // Get one Profissional
+     * const profissional = await prisma.profissional.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProfissionalFindUniqueArgs>(args: SelectSubset<T, ProfissionalFindUniqueArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Profissional that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProfissionalFindUniqueOrThrowArgs} args - Arguments to find a Profissional
+     * @example
+     * // Get one Profissional
+     * const profissional = await prisma.profissional.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProfissionalFindUniqueOrThrowArgs>(args: SelectSubset<T, ProfissionalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Profissional that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalFindFirstArgs} args - Arguments to find a Profissional
+     * @example
+     * // Get one Profissional
+     * const profissional = await prisma.profissional.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProfissionalFindFirstArgs>(args?: SelectSubset<T, ProfissionalFindFirstArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Profissional that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalFindFirstOrThrowArgs} args - Arguments to find a Profissional
+     * @example
+     * // Get one Profissional
+     * const profissional = await prisma.profissional.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProfissionalFindFirstOrThrowArgs>(args?: SelectSubset<T, ProfissionalFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Profissionals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Profissionals
+     * const profissionals = await prisma.profissional.findMany()
+     * 
+     * // Get first 10 Profissionals
+     * const profissionals = await prisma.profissional.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const profissionalWithIdOnly = await prisma.profissional.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProfissionalFindManyArgs>(args?: SelectSubset<T, ProfissionalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Profissional.
+     * @param {ProfissionalCreateArgs} args - Arguments to create a Profissional.
+     * @example
+     * // Create one Profissional
+     * const Profissional = await prisma.profissional.create({
+     *   data: {
+     *     // ... data to create a Profissional
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProfissionalCreateArgs>(args: SelectSubset<T, ProfissionalCreateArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Profissionals.
+     * @param {ProfissionalCreateManyArgs} args - Arguments to create many Profissionals.
+     * @example
+     * // Create many Profissionals
+     * const profissional = await prisma.profissional.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProfissionalCreateManyArgs>(args?: SelectSubset<T, ProfissionalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Profissional.
+     * @param {ProfissionalDeleteArgs} args - Arguments to delete one Profissional.
+     * @example
+     * // Delete one Profissional
+     * const Profissional = await prisma.profissional.delete({
+     *   where: {
+     *     // ... filter to delete one Profissional
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProfissionalDeleteArgs>(args: SelectSubset<T, ProfissionalDeleteArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Profissional.
+     * @param {ProfissionalUpdateArgs} args - Arguments to update one Profissional.
+     * @example
+     * // Update one Profissional
+     * const profissional = await prisma.profissional.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProfissionalUpdateArgs>(args: SelectSubset<T, ProfissionalUpdateArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Profissionals.
+     * @param {ProfissionalDeleteManyArgs} args - Arguments to filter Profissionals to delete.
+     * @example
+     * // Delete a few Profissionals
+     * const { count } = await prisma.profissional.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProfissionalDeleteManyArgs>(args?: SelectSubset<T, ProfissionalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Profissionals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Profissionals
+     * const profissional = await prisma.profissional.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProfissionalUpdateManyArgs>(args: SelectSubset<T, ProfissionalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Profissional.
+     * @param {ProfissionalUpsertArgs} args - Arguments to update or create a Profissional.
+     * @example
+     * // Update or create a Profissional
+     * const profissional = await prisma.profissional.upsert({
+     *   create: {
+     *     // ... data to create a Profissional
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Profissional we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProfissionalUpsertArgs>(args: SelectSubset<T, ProfissionalUpsertArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Profissionals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalCountArgs} args - Arguments to filter Profissionals to count.
+     * @example
+     * // Count the number of Profissionals
+     * const count = await prisma.profissional.count({
+     *   where: {
+     *     // ... the filter for the Profissionals we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProfissionalCountArgs>(
+      args?: Subset<T, ProfissionalCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProfissionalCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Profissional.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProfissionalAggregateArgs>(args: Subset<T, ProfissionalAggregateArgs>): Prisma.PrismaPromise<GetProfissionalAggregateType<T>>
+
+    /**
+     * Group by Profissional.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfissionalGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProfissionalGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProfissionalGroupByArgs['orderBy'] }
+        : { orderBy?: ProfissionalGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProfissionalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfissionalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Profissional model
+   */
+  readonly fields: ProfissionalFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Profissional.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProfissionalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    agendamentos<T extends Profissional$agendamentosArgs<ExtArgs> = {}>(args?: Subset<T, Profissional$agendamentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Profissional model
+   */
+  interface ProfissionalFieldRefs {
+    readonly id: FieldRef<"Profissional", 'Int'>
+    readonly nome: FieldRef<"Profissional", 'String'>
+    readonly especialidade: FieldRef<"Profissional", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Profissional findUnique
+   */
+  export type ProfissionalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * Filter, which Profissional to fetch.
+     */
+    where: ProfissionalWhereUniqueInput
+  }
+
+  /**
+   * Profissional findUniqueOrThrow
+   */
+  export type ProfissionalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * Filter, which Profissional to fetch.
+     */
+    where: ProfissionalWhereUniqueInput
+  }
+
+  /**
+   * Profissional findFirst
+   */
+  export type ProfissionalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * Filter, which Profissional to fetch.
+     */
+    where?: ProfissionalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profissionals to fetch.
+     */
+    orderBy?: ProfissionalOrderByWithRelationInput | ProfissionalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Profissionals.
+     */
+    cursor?: ProfissionalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profissionals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profissionals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Profissionals.
+     */
+    distinct?: ProfissionalScalarFieldEnum | ProfissionalScalarFieldEnum[]
+  }
+
+  /**
+   * Profissional findFirstOrThrow
+   */
+  export type ProfissionalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * Filter, which Profissional to fetch.
+     */
+    where?: ProfissionalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profissionals to fetch.
+     */
+    orderBy?: ProfissionalOrderByWithRelationInput | ProfissionalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Profissionals.
+     */
+    cursor?: ProfissionalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profissionals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profissionals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Profissionals.
+     */
+    distinct?: ProfissionalScalarFieldEnum | ProfissionalScalarFieldEnum[]
+  }
+
+  /**
+   * Profissional findMany
+   */
+  export type ProfissionalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * Filter, which Profissionals to fetch.
+     */
+    where?: ProfissionalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Profissionals to fetch.
+     */
+    orderBy?: ProfissionalOrderByWithRelationInput | ProfissionalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Profissionals.
+     */
+    cursor?: ProfissionalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Profissionals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Profissionals.
+     */
+    skip?: number
+    distinct?: ProfissionalScalarFieldEnum | ProfissionalScalarFieldEnum[]
+  }
+
+  /**
+   * Profissional create
+   */
+  export type ProfissionalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Profissional.
+     */
+    data: XOR<ProfissionalCreateInput, ProfissionalUncheckedCreateInput>
+  }
+
+  /**
+   * Profissional createMany
+   */
+  export type ProfissionalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Profissionals.
+     */
+    data: ProfissionalCreateManyInput | ProfissionalCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Profissional update
+   */
+  export type ProfissionalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Profissional.
+     */
+    data: XOR<ProfissionalUpdateInput, ProfissionalUncheckedUpdateInput>
+    /**
+     * Choose, which Profissional to update.
+     */
+    where: ProfissionalWhereUniqueInput
+  }
+
+  /**
+   * Profissional updateMany
+   */
+  export type ProfissionalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Profissionals.
+     */
+    data: XOR<ProfissionalUpdateManyMutationInput, ProfissionalUncheckedUpdateManyInput>
+    /**
+     * Filter which Profissionals to update
+     */
+    where?: ProfissionalWhereInput
+    /**
+     * Limit how many Profissionals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Profissional upsert
+   */
+  export type ProfissionalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Profissional to update in case it exists.
+     */
+    where: ProfissionalWhereUniqueInput
+    /**
+     * In case the Profissional found by the `where` argument doesn't exist, create a new Profissional with this data.
+     */
+    create: XOR<ProfissionalCreateInput, ProfissionalUncheckedCreateInput>
+    /**
+     * In case the Profissional was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProfissionalUpdateInput, ProfissionalUncheckedUpdateInput>
+  }
+
+  /**
+   * Profissional delete
+   */
+  export type ProfissionalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+    /**
+     * Filter which Profissional to delete.
+     */
+    where: ProfissionalWhereUniqueInput
+  }
+
+  /**
+   * Profissional deleteMany
+   */
+  export type ProfissionalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Profissionals to delete
+     */
+    where?: ProfissionalWhereInput
+    /**
+     * Limit how many Profissionals to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Profissional.agendamentos
+   */
+  export type Profissional$agendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    where?: AgendamentoWhereInput
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    cursor?: AgendamentoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AgendamentoScalarFieldEnum | AgendamentoScalarFieldEnum[]
+  }
+
+  /**
+   * Profissional without action
+   */
+  export type ProfissionalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissional
+     */
+    select?: ProfissionalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissional
+     */
+    omit?: ProfissionalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissionalInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Servico
+   */
+
+  export type AggregateServico = {
+    _count: ServicoCountAggregateOutputType | null
+    _avg: ServicoAvgAggregateOutputType | null
+    _sum: ServicoSumAggregateOutputType | null
+    _min: ServicoMinAggregateOutputType | null
+    _max: ServicoMaxAggregateOutputType | null
+  }
+
+  export type ServicoAvgAggregateOutputType = {
+    id: number | null
+    preco: number | null
+  }
+
+  export type ServicoSumAggregateOutputType = {
+    id: number | null
+    preco: number | null
+  }
+
+  export type ServicoMinAggregateOutputType = {
+    id: number | null
+    descricao: string | null
+    preco: number | null
+  }
+
+  export type ServicoMaxAggregateOutputType = {
+    id: number | null
+    descricao: string | null
+    preco: number | null
+  }
+
+  export type ServicoCountAggregateOutputType = {
+    id: number
+    descricao: number
+    preco: number
+    _all: number
+  }
+
+
+  export type ServicoAvgAggregateInputType = {
+    id?: true
+    preco?: true
+  }
+
+  export type ServicoSumAggregateInputType = {
+    id?: true
+    preco?: true
+  }
+
+  export type ServicoMinAggregateInputType = {
+    id?: true
+    descricao?: true
+    preco?: true
+  }
+
+  export type ServicoMaxAggregateInputType = {
+    id?: true
+    descricao?: true
+    preco?: true
+  }
+
+  export type ServicoCountAggregateInputType = {
+    id?: true
+    descricao?: true
+    preco?: true
+    _all?: true
+  }
+
+  export type ServicoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Servico to aggregate.
+     */
+    where?: ServicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Servicos to fetch.
+     */
+    orderBy?: ServicoOrderByWithRelationInput | ServicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ServicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Servicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Servicos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Servicos
+    **/
+    _count?: true | ServicoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ServicoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ServicoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ServicoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ServicoMaxAggregateInputType
+  }
+
+  export type GetServicoAggregateType<T extends ServicoAggregateArgs> = {
+        [P in keyof T & keyof AggregateServico]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServico[P]>
+      : GetScalarType<T[P], AggregateServico[P]>
+  }
+
+
+
+
+  export type ServicoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServicoWhereInput
+    orderBy?: ServicoOrderByWithAggregationInput | ServicoOrderByWithAggregationInput[]
+    by: ServicoScalarFieldEnum[] | ServicoScalarFieldEnum
+    having?: ServicoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ServicoCountAggregateInputType | true
+    _avg?: ServicoAvgAggregateInputType
+    _sum?: ServicoSumAggregateInputType
+    _min?: ServicoMinAggregateInputType
+    _max?: ServicoMaxAggregateInputType
+  }
+
+  export type ServicoGroupByOutputType = {
+    id: number
+    descricao: string
+    preco: number
+    _count: ServicoCountAggregateOutputType | null
+    _avg: ServicoAvgAggregateOutputType | null
+    _sum: ServicoSumAggregateOutputType | null
+    _min: ServicoMinAggregateOutputType | null
+    _max: ServicoMaxAggregateOutputType | null
+  }
+
+  type GetServicoGroupByPayload<T extends ServicoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ServicoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ServicoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ServicoGroupByOutputType[P]>
+            : GetScalarType<T[P], ServicoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ServicoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    descricao?: boolean
+    preco?: boolean
+    agendamentos?: boolean | Servico$agendamentosArgs<ExtArgs>
+    _count?: boolean | ServicoCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["servico"]>
+
+
+
+  export type ServicoSelectScalar = {
+    id?: boolean
+    descricao?: boolean
+    preco?: boolean
+  }
+
+  export type ServicoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descricao" | "preco", ExtArgs["result"]["servico"]>
+  export type ServicoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | Servico$agendamentosArgs<ExtArgs>
+    _count?: boolean | ServicoCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ServicoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Servico"
+    objects: {
+      agendamentos: Prisma.$AgendamentoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      descricao: string
+      preco: number
+    }, ExtArgs["result"]["servico"]>
+    composites: {}
+  }
+
+  type ServicoGetPayload<S extends boolean | null | undefined | ServicoDefaultArgs> = $Result.GetResult<Prisma.$ServicoPayload, S>
+
+  type ServicoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ServicoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ServicoCountAggregateInputType | true
+    }
+
+  export interface ServicoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Servico'], meta: { name: 'Servico' } }
+    /**
+     * Find zero or one Servico that matches the filter.
+     * @param {ServicoFindUniqueArgs} args - Arguments to find a Servico
+     * @example
+     * // Get one Servico
+     * const servico = await prisma.servico.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ServicoFindUniqueArgs>(args: SelectSubset<T, ServicoFindUniqueArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Servico that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ServicoFindUniqueOrThrowArgs} args - Arguments to find a Servico
+     * @example
+     * // Get one Servico
+     * const servico = await prisma.servico.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ServicoFindUniqueOrThrowArgs>(args: SelectSubset<T, ServicoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Servico that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoFindFirstArgs} args - Arguments to find a Servico
+     * @example
+     * // Get one Servico
+     * const servico = await prisma.servico.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ServicoFindFirstArgs>(args?: SelectSubset<T, ServicoFindFirstArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Servico that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoFindFirstOrThrowArgs} args - Arguments to find a Servico
+     * @example
+     * // Get one Servico
+     * const servico = await prisma.servico.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ServicoFindFirstOrThrowArgs>(args?: SelectSubset<T, ServicoFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Servicos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Servicos
+     * const servicos = await prisma.servico.findMany()
+     * 
+     * // Get first 10 Servicos
+     * const servicos = await prisma.servico.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const servicoWithIdOnly = await prisma.servico.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ServicoFindManyArgs>(args?: SelectSubset<T, ServicoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Servico.
+     * @param {ServicoCreateArgs} args - Arguments to create a Servico.
+     * @example
+     * // Create one Servico
+     * const Servico = await prisma.servico.create({
+     *   data: {
+     *     // ... data to create a Servico
+     *   }
+     * })
+     * 
+     */
+    create<T extends ServicoCreateArgs>(args: SelectSubset<T, ServicoCreateArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Servicos.
+     * @param {ServicoCreateManyArgs} args - Arguments to create many Servicos.
+     * @example
+     * // Create many Servicos
+     * const servico = await prisma.servico.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ServicoCreateManyArgs>(args?: SelectSubset<T, ServicoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Servico.
+     * @param {ServicoDeleteArgs} args - Arguments to delete one Servico.
+     * @example
+     * // Delete one Servico
+     * const Servico = await prisma.servico.delete({
+     *   where: {
+     *     // ... filter to delete one Servico
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ServicoDeleteArgs>(args: SelectSubset<T, ServicoDeleteArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Servico.
+     * @param {ServicoUpdateArgs} args - Arguments to update one Servico.
+     * @example
+     * // Update one Servico
+     * const servico = await prisma.servico.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ServicoUpdateArgs>(args: SelectSubset<T, ServicoUpdateArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Servicos.
+     * @param {ServicoDeleteManyArgs} args - Arguments to filter Servicos to delete.
+     * @example
+     * // Delete a few Servicos
+     * const { count } = await prisma.servico.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ServicoDeleteManyArgs>(args?: SelectSubset<T, ServicoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Servicos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Servicos
+     * const servico = await prisma.servico.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ServicoUpdateManyArgs>(args: SelectSubset<T, ServicoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Servico.
+     * @param {ServicoUpsertArgs} args - Arguments to update or create a Servico.
+     * @example
+     * // Update or create a Servico
+     * const servico = await prisma.servico.upsert({
+     *   create: {
+     *     // ... data to create a Servico
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Servico we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ServicoUpsertArgs>(args: SelectSubset<T, ServicoUpsertArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Servicos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoCountArgs} args - Arguments to filter Servicos to count.
+     * @example
+     * // Count the number of Servicos
+     * const count = await prisma.servico.count({
+     *   where: {
+     *     // ... the filter for the Servicos we want to count
+     *   }
+     * })
+    **/
+    count<T extends ServicoCountArgs>(
+      args?: Subset<T, ServicoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ServicoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Servico.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ServicoAggregateArgs>(args: Subset<T, ServicoAggregateArgs>): Prisma.PrismaPromise<GetServicoAggregateType<T>>
+
+    /**
+     * Group by Servico.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServicoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ServicoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ServicoGroupByArgs['orderBy'] }
+        : { orderBy?: ServicoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ServicoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServicoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Servico model
+   */
+  readonly fields: ServicoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Servico.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ServicoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    agendamentos<T extends Servico$agendamentosArgs<ExtArgs> = {}>(args?: Subset<T, Servico$agendamentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Servico model
+   */
+  interface ServicoFieldRefs {
+    readonly id: FieldRef<"Servico", 'Int'>
+    readonly descricao: FieldRef<"Servico", 'String'>
+    readonly preco: FieldRef<"Servico", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Servico findUnique
+   */
+  export type ServicoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * Filter, which Servico to fetch.
+     */
+    where: ServicoWhereUniqueInput
+  }
+
+  /**
+   * Servico findUniqueOrThrow
+   */
+  export type ServicoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * Filter, which Servico to fetch.
+     */
+    where: ServicoWhereUniqueInput
+  }
+
+  /**
+   * Servico findFirst
+   */
+  export type ServicoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * Filter, which Servico to fetch.
+     */
+    where?: ServicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Servicos to fetch.
+     */
+    orderBy?: ServicoOrderByWithRelationInput | ServicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Servicos.
+     */
+    cursor?: ServicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Servicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Servicos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Servicos.
+     */
+    distinct?: ServicoScalarFieldEnum | ServicoScalarFieldEnum[]
+  }
+
+  /**
+   * Servico findFirstOrThrow
+   */
+  export type ServicoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * Filter, which Servico to fetch.
+     */
+    where?: ServicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Servicos to fetch.
+     */
+    orderBy?: ServicoOrderByWithRelationInput | ServicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Servicos.
+     */
+    cursor?: ServicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Servicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Servicos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Servicos.
+     */
+    distinct?: ServicoScalarFieldEnum | ServicoScalarFieldEnum[]
+  }
+
+  /**
+   * Servico findMany
+   */
+  export type ServicoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * Filter, which Servicos to fetch.
+     */
+    where?: ServicoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Servicos to fetch.
+     */
+    orderBy?: ServicoOrderByWithRelationInput | ServicoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Servicos.
+     */
+    cursor?: ServicoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Servicos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Servicos.
+     */
+    skip?: number
+    distinct?: ServicoScalarFieldEnum | ServicoScalarFieldEnum[]
+  }
+
+  /**
+   * Servico create
+   */
+  export type ServicoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Servico.
+     */
+    data: XOR<ServicoCreateInput, ServicoUncheckedCreateInput>
+  }
+
+  /**
+   * Servico createMany
+   */
+  export type ServicoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Servicos.
+     */
+    data: ServicoCreateManyInput | ServicoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Servico update
+   */
+  export type ServicoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Servico.
+     */
+    data: XOR<ServicoUpdateInput, ServicoUncheckedUpdateInput>
+    /**
+     * Choose, which Servico to update.
+     */
+    where: ServicoWhereUniqueInput
+  }
+
+  /**
+   * Servico updateMany
+   */
+  export type ServicoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Servicos.
+     */
+    data: XOR<ServicoUpdateManyMutationInput, ServicoUncheckedUpdateManyInput>
+    /**
+     * Filter which Servicos to update
+     */
+    where?: ServicoWhereInput
+    /**
+     * Limit how many Servicos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Servico upsert
+   */
+  export type ServicoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Servico to update in case it exists.
+     */
+    where: ServicoWhereUniqueInput
+    /**
+     * In case the Servico found by the `where` argument doesn't exist, create a new Servico with this data.
+     */
+    create: XOR<ServicoCreateInput, ServicoUncheckedCreateInput>
+    /**
+     * In case the Servico was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ServicoUpdateInput, ServicoUncheckedUpdateInput>
+  }
+
+  /**
+   * Servico delete
+   */
+  export type ServicoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+    /**
+     * Filter which Servico to delete.
+     */
+    where: ServicoWhereUniqueInput
+  }
+
+  /**
+   * Servico deleteMany
+   */
+  export type ServicoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Servicos to delete
+     */
+    where?: ServicoWhereInput
+    /**
+     * Limit how many Servicos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Servico.agendamentos
+   */
+  export type Servico$agendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    where?: AgendamentoWhereInput
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    cursor?: AgendamentoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AgendamentoScalarFieldEnum | AgendamentoScalarFieldEnum[]
+  }
+
+  /**
+   * Servico without action
+   */
+  export type ServicoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Servico
+     */
+    select?: ServicoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Servico
+     */
+    omit?: ServicoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServicoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Agendamento
+   */
+
+  export type AggregateAgendamento = {
+    _count: AgendamentoCountAggregateOutputType | null
+    _avg: AgendamentoAvgAggregateOutputType | null
+    _sum: AgendamentoSumAggregateOutputType | null
+    _min: AgendamentoMinAggregateOutputType | null
+    _max: AgendamentoMaxAggregateOutputType | null
+  }
+
+  export type AgendamentoAvgAggregateOutputType = {
+    id: number | null
+    clienteId: number | null
+    profissionalId: number | null
+    servicoId: number | null
+  }
+
+  export type AgendamentoSumAggregateOutputType = {
+    id: number | null
+    clienteId: number | null
+    profissionalId: number | null
+    servicoId: number | null
+  }
+
+  export type AgendamentoMinAggregateOutputType = {
+    id: number | null
+    dataHora: Date | null
+    clienteId: number | null
+    profissionalId: number | null
+    servicoId: number | null
+  }
+
+  export type AgendamentoMaxAggregateOutputType = {
+    id: number | null
+    dataHora: Date | null
+    clienteId: number | null
+    profissionalId: number | null
+    servicoId: number | null
+  }
+
+  export type AgendamentoCountAggregateOutputType = {
+    id: number
+    dataHora: number
+    clienteId: number
+    profissionalId: number
+    servicoId: number
+    _all: number
+  }
+
+
+  export type AgendamentoAvgAggregateInputType = {
+    id?: true
+    clienteId?: true
+    profissionalId?: true
+    servicoId?: true
+  }
+
+  export type AgendamentoSumAggregateInputType = {
+    id?: true
+    clienteId?: true
+    profissionalId?: true
+    servicoId?: true
+  }
+
+  export type AgendamentoMinAggregateInputType = {
+    id?: true
+    dataHora?: true
+    clienteId?: true
+    profissionalId?: true
+    servicoId?: true
+  }
+
+  export type AgendamentoMaxAggregateInputType = {
+    id?: true
+    dataHora?: true
+    clienteId?: true
+    profissionalId?: true
+    servicoId?: true
+  }
+
+  export type AgendamentoCountAggregateInputType = {
+    id?: true
+    dataHora?: true
+    clienteId?: true
+    profissionalId?: true
+    servicoId?: true
+    _all?: true
+  }
+
+  export type AgendamentoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Agendamento to aggregate.
+     */
+    where?: AgendamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agendamentos to fetch.
+     */
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AgendamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agendamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agendamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Agendamentos
+    **/
+    _count?: true | AgendamentoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AgendamentoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AgendamentoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AgendamentoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AgendamentoMaxAggregateInputType
+  }
+
+  export type GetAgendamentoAggregateType<T extends AgendamentoAggregateArgs> = {
+        [P in keyof T & keyof AggregateAgendamento]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAgendamento[P]>
+      : GetScalarType<T[P], AggregateAgendamento[P]>
+  }
+
+
+
+
+  export type AgendamentoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AgendamentoWhereInput
+    orderBy?: AgendamentoOrderByWithAggregationInput | AgendamentoOrderByWithAggregationInput[]
+    by: AgendamentoScalarFieldEnum[] | AgendamentoScalarFieldEnum
+    having?: AgendamentoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AgendamentoCountAggregateInputType | true
+    _avg?: AgendamentoAvgAggregateInputType
+    _sum?: AgendamentoSumAggregateInputType
+    _min?: AgendamentoMinAggregateInputType
+    _max?: AgendamentoMaxAggregateInputType
+  }
+
+  export type AgendamentoGroupByOutputType = {
+    id: number
+    dataHora: Date
+    clienteId: number
+    profissionalId: number
+    servicoId: number
+    _count: AgendamentoCountAggregateOutputType | null
+    _avg: AgendamentoAvgAggregateOutputType | null
+    _sum: AgendamentoSumAggregateOutputType | null
+    _min: AgendamentoMinAggregateOutputType | null
+    _max: AgendamentoMaxAggregateOutputType | null
+  }
+
+  type GetAgendamentoGroupByPayload<T extends AgendamentoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AgendamentoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AgendamentoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AgendamentoGroupByOutputType[P]>
+            : GetScalarType<T[P], AgendamentoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AgendamentoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dataHora?: boolean
+    clienteId?: boolean
+    profissionalId?: boolean
+    servicoId?: boolean
+    clientes?: boolean | ClientDefaultArgs<ExtArgs>
+    profissional?: boolean | ProfissionalDefaultArgs<ExtArgs>
+    servico?: boolean | ServicoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["agendamento"]>
+
+
+
+  export type AgendamentoSelectScalar = {
+    id?: boolean
+    dataHora?: boolean
+    clienteId?: boolean
+    profissionalId?: boolean
+    servicoId?: boolean
+  }
+
+  export type AgendamentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dataHora" | "clienteId" | "profissionalId" | "servicoId", ExtArgs["result"]["agendamento"]>
+  export type AgendamentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    clientes?: boolean | ClientDefaultArgs<ExtArgs>
+    profissional?: boolean | ProfissionalDefaultArgs<ExtArgs>
+    servico?: boolean | ServicoDefaultArgs<ExtArgs>
+  }
+
+  export type $AgendamentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Agendamento"
+    objects: {
+      clientes: Prisma.$ClientPayload<ExtArgs>
+      profissional: Prisma.$ProfissionalPayload<ExtArgs>
+      servico: Prisma.$ServicoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      dataHora: Date
+      clienteId: number
+      profissionalId: number
+      servicoId: number
+    }, ExtArgs["result"]["agendamento"]>
+    composites: {}
+  }
+
+  type AgendamentoGetPayload<S extends boolean | null | undefined | AgendamentoDefaultArgs> = $Result.GetResult<Prisma.$AgendamentoPayload, S>
+
+  type AgendamentoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AgendamentoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AgendamentoCountAggregateInputType | true
+    }
+
+  export interface AgendamentoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Agendamento'], meta: { name: 'Agendamento' } }
+    /**
+     * Find zero or one Agendamento that matches the filter.
+     * @param {AgendamentoFindUniqueArgs} args - Arguments to find a Agendamento
+     * @example
+     * // Get one Agendamento
+     * const agendamento = await prisma.agendamento.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AgendamentoFindUniqueArgs>(args: SelectSubset<T, AgendamentoFindUniqueArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Agendamento that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AgendamentoFindUniqueOrThrowArgs} args - Arguments to find a Agendamento
+     * @example
+     * // Get one Agendamento
+     * const agendamento = await prisma.agendamento.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AgendamentoFindUniqueOrThrowArgs>(args: SelectSubset<T, AgendamentoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Agendamento that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoFindFirstArgs} args - Arguments to find a Agendamento
+     * @example
+     * // Get one Agendamento
+     * const agendamento = await prisma.agendamento.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AgendamentoFindFirstArgs>(args?: SelectSubset<T, AgendamentoFindFirstArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Agendamento that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoFindFirstOrThrowArgs} args - Arguments to find a Agendamento
+     * @example
+     * // Get one Agendamento
+     * const agendamento = await prisma.agendamento.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AgendamentoFindFirstOrThrowArgs>(args?: SelectSubset<T, AgendamentoFindFirstOrThrowArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Agendamentos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Agendamentos
+     * const agendamentos = await prisma.agendamento.findMany()
+     * 
+     * // Get first 10 Agendamentos
+     * const agendamentos = await prisma.agendamento.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const agendamentoWithIdOnly = await prisma.agendamento.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AgendamentoFindManyArgs>(args?: SelectSubset<T, AgendamentoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Agendamento.
+     * @param {AgendamentoCreateArgs} args - Arguments to create a Agendamento.
+     * @example
+     * // Create one Agendamento
+     * const Agendamento = await prisma.agendamento.create({
+     *   data: {
+     *     // ... data to create a Agendamento
+     *   }
+     * })
+     * 
+     */
+    create<T extends AgendamentoCreateArgs>(args: SelectSubset<T, AgendamentoCreateArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Agendamentos.
+     * @param {AgendamentoCreateManyArgs} args - Arguments to create many Agendamentos.
+     * @example
+     * // Create many Agendamentos
+     * const agendamento = await prisma.agendamento.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AgendamentoCreateManyArgs>(args?: SelectSubset<T, AgendamentoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Agendamento.
+     * @param {AgendamentoDeleteArgs} args - Arguments to delete one Agendamento.
+     * @example
+     * // Delete one Agendamento
+     * const Agendamento = await prisma.agendamento.delete({
+     *   where: {
+     *     // ... filter to delete one Agendamento
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AgendamentoDeleteArgs>(args: SelectSubset<T, AgendamentoDeleteArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Agendamento.
+     * @param {AgendamentoUpdateArgs} args - Arguments to update one Agendamento.
+     * @example
+     * // Update one Agendamento
+     * const agendamento = await prisma.agendamento.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AgendamentoUpdateArgs>(args: SelectSubset<T, AgendamentoUpdateArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Agendamentos.
+     * @param {AgendamentoDeleteManyArgs} args - Arguments to filter Agendamentos to delete.
+     * @example
+     * // Delete a few Agendamentos
+     * const { count } = await prisma.agendamento.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AgendamentoDeleteManyArgs>(args?: SelectSubset<T, AgendamentoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Agendamentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Agendamentos
+     * const agendamento = await prisma.agendamento.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AgendamentoUpdateManyArgs>(args: SelectSubset<T, AgendamentoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Agendamento.
+     * @param {AgendamentoUpsertArgs} args - Arguments to update or create a Agendamento.
+     * @example
+     * // Update or create a Agendamento
+     * const agendamento = await prisma.agendamento.upsert({
+     *   create: {
+     *     // ... data to create a Agendamento
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Agendamento we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AgendamentoUpsertArgs>(args: SelectSubset<T, AgendamentoUpsertArgs<ExtArgs>>): Prisma__AgendamentoClient<$Result.GetResult<Prisma.$AgendamentoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Agendamentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoCountArgs} args - Arguments to filter Agendamentos to count.
+     * @example
+     * // Count the number of Agendamentos
+     * const count = await prisma.agendamento.count({
+     *   where: {
+     *     // ... the filter for the Agendamentos we want to count
+     *   }
+     * })
+    **/
+    count<T extends AgendamentoCountArgs>(
+      args?: Subset<T, AgendamentoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AgendamentoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Agendamento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AgendamentoAggregateArgs>(args: Subset<T, AgendamentoAggregateArgs>): Prisma.PrismaPromise<GetAgendamentoAggregateType<T>>
+
+    /**
+     * Group by Agendamento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AgendamentoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AgendamentoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AgendamentoGroupByArgs['orderBy'] }
+        : { orderBy?: AgendamentoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AgendamentoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAgendamentoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Agendamento model
+   */
+  readonly fields: AgendamentoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Agendamento.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AgendamentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    clientes<T extends ClientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientDefaultArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    profissional<T extends ProfissionalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfissionalDefaultArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    servico<T extends ServicoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServicoDefaultArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Agendamento model
+   */
+  interface AgendamentoFieldRefs {
+    readonly id: FieldRef<"Agendamento", 'Int'>
+    readonly dataHora: FieldRef<"Agendamento", 'DateTime'>
+    readonly clienteId: FieldRef<"Agendamento", 'Int'>
+    readonly profissionalId: FieldRef<"Agendamento", 'Int'>
+    readonly servicoId: FieldRef<"Agendamento", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Agendamento findUnique
+   */
+  export type AgendamentoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which Agendamento to fetch.
+     */
+    where: AgendamentoWhereUniqueInput
+  }
+
+  /**
+   * Agendamento findUniqueOrThrow
+   */
+  export type AgendamentoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which Agendamento to fetch.
+     */
+    where: AgendamentoWhereUniqueInput
+  }
+
+  /**
+   * Agendamento findFirst
+   */
+  export type AgendamentoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which Agendamento to fetch.
+     */
+    where?: AgendamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agendamentos to fetch.
+     */
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Agendamentos.
+     */
+    cursor?: AgendamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agendamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agendamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agendamentos.
+     */
+    distinct?: AgendamentoScalarFieldEnum | AgendamentoScalarFieldEnum[]
+  }
+
+  /**
+   * Agendamento findFirstOrThrow
+   */
+  export type AgendamentoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which Agendamento to fetch.
+     */
+    where?: AgendamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agendamentos to fetch.
+     */
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Agendamentos.
+     */
+    cursor?: AgendamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agendamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agendamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Agendamentos.
+     */
+    distinct?: AgendamentoScalarFieldEnum | AgendamentoScalarFieldEnum[]
+  }
+
+  /**
+   * Agendamento findMany
+   */
+  export type AgendamentoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which Agendamentos to fetch.
+     */
+    where?: AgendamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Agendamentos to fetch.
+     */
+    orderBy?: AgendamentoOrderByWithRelationInput | AgendamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Agendamentos.
+     */
+    cursor?: AgendamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Agendamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Agendamentos.
+     */
+    skip?: number
+    distinct?: AgendamentoScalarFieldEnum | AgendamentoScalarFieldEnum[]
+  }
+
+  /**
+   * Agendamento create
+   */
+  export type AgendamentoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Agendamento.
+     */
+    data: XOR<AgendamentoCreateInput, AgendamentoUncheckedCreateInput>
+  }
+
+  /**
+   * Agendamento createMany
+   */
+  export type AgendamentoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Agendamentos.
+     */
+    data: AgendamentoCreateManyInput | AgendamentoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Agendamento update
+   */
+  export type AgendamentoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Agendamento.
+     */
+    data: XOR<AgendamentoUpdateInput, AgendamentoUncheckedUpdateInput>
+    /**
+     * Choose, which Agendamento to update.
+     */
+    where: AgendamentoWhereUniqueInput
+  }
+
+  /**
+   * Agendamento updateMany
+   */
+  export type AgendamentoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Agendamentos.
+     */
+    data: XOR<AgendamentoUpdateManyMutationInput, AgendamentoUncheckedUpdateManyInput>
+    /**
+     * Filter which Agendamentos to update
+     */
+    where?: AgendamentoWhereInput
+    /**
+     * Limit how many Agendamentos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Agendamento upsert
+   */
+  export type AgendamentoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Agendamento to update in case it exists.
+     */
+    where: AgendamentoWhereUniqueInput
+    /**
+     * In case the Agendamento found by the `where` argument doesn't exist, create a new Agendamento with this data.
+     */
+    create: XOR<AgendamentoCreateInput, AgendamentoUncheckedCreateInput>
+    /**
+     * In case the Agendamento was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AgendamentoUpdateInput, AgendamentoUncheckedUpdateInput>
+  }
+
+  /**
+   * Agendamento delete
+   */
+  export type AgendamentoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
+    /**
+     * Filter which Agendamento to delete.
+     */
+    where: AgendamentoWhereUniqueInput
+  }
+
+  /**
+   * Agendamento deleteMany
+   */
+  export type AgendamentoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Agendamentos to delete
+     */
+    where?: AgendamentoWhereInput
+    /**
+     * Limit how many Agendamentos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Agendamento without action
+   */
+  export type AgendamentoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Agendamento
+     */
+    select?: AgendamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Agendamento
+     */
+    omit?: AgendamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AgendamentoInclude<ExtArgs> | null
   }
 
 
@@ -1794,6 +5129,35 @@ export namespace Prisma {
   export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
 
 
+  export const ProfissionalScalarFieldEnum: {
+    id: 'id',
+    nome: 'nome',
+    especialidade: 'especialidade'
+  };
+
+  export type ProfissionalScalarFieldEnum = (typeof ProfissionalScalarFieldEnum)[keyof typeof ProfissionalScalarFieldEnum]
+
+
+  export const ServicoScalarFieldEnum: {
+    id: 'id',
+    descricao: 'descricao',
+    preco: 'preco'
+  };
+
+  export type ServicoScalarFieldEnum = (typeof ServicoScalarFieldEnum)[keyof typeof ServicoScalarFieldEnum]
+
+
+  export const AgendamentoScalarFieldEnum: {
+    id: 'id',
+    dataHora: 'dataHora',
+    clienteId: 'clienteId',
+    profissionalId: 'profissionalId',
+    servicoId: 'servicoId'
+  };
+
+  export type AgendamentoScalarFieldEnum = (typeof AgendamentoScalarFieldEnum)[keyof typeof AgendamentoScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -1817,6 +5181,21 @@ export namespace Prisma {
   };
 
   export type ClientOrderByRelevanceFieldEnum = (typeof ClientOrderByRelevanceFieldEnum)[keyof typeof ClientOrderByRelevanceFieldEnum]
+
+
+  export const ProfissionalOrderByRelevanceFieldEnum: {
+    nome: 'nome',
+    especialidade: 'especialidade'
+  };
+
+  export type ProfissionalOrderByRelevanceFieldEnum = (typeof ProfissionalOrderByRelevanceFieldEnum)[keyof typeof ProfissionalOrderByRelevanceFieldEnum]
+
+
+  export const ServicoOrderByRelevanceFieldEnum: {
+    descricao: 'descricao'
+  };
+
+  export type ServicoOrderByRelevanceFieldEnum = (typeof ServicoOrderByRelevanceFieldEnum)[keyof typeof ServicoOrderByRelevanceFieldEnum]
 
 
   /**
@@ -1864,6 +5243,7 @@ export namespace Prisma {
     telefone?: StringFilter<"Client"> | string
     email?: StringNullableFilter<"Client"> | string | null
     dataCadastro?: DateTimeFilter<"Client"> | Date | string
+    agendamentos?: AgendamentoListRelationFilter
   }
 
   export type ClientOrderByWithRelationInput = {
@@ -1872,19 +5252,21 @@ export namespace Prisma {
     telefone?: SortOrder
     email?: SortOrderInput | SortOrder
     dataCadastro?: SortOrder
+    agendamentos?: AgendamentoOrderByRelationAggregateInput
     _relevance?: ClientOrderByRelevanceInput
   }
 
   export type ClientWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    telefone?: string
     email?: string
     AND?: ClientWhereInput | ClientWhereInput[]
     OR?: ClientWhereInput[]
     NOT?: ClientWhereInput | ClientWhereInput[]
     nome?: StringFilter<"Client"> | string
-    telefone?: StringFilter<"Client"> | string
     dataCadastro?: DateTimeFilter<"Client"> | Date | string
-  }, "id" | "email">
+    agendamentos?: AgendamentoListRelationFilter
+  }, "id" | "telefone" | "email">
 
   export type ClientOrderByWithAggregationInput = {
     id?: SortOrder
@@ -1910,11 +5292,171 @@ export namespace Prisma {
     dataCadastro?: DateTimeWithAggregatesFilter<"Client"> | Date | string
   }
 
+  export type ProfissionalWhereInput = {
+    AND?: ProfissionalWhereInput | ProfissionalWhereInput[]
+    OR?: ProfissionalWhereInput[]
+    NOT?: ProfissionalWhereInput | ProfissionalWhereInput[]
+    id?: IntFilter<"Profissional"> | number
+    nome?: StringFilter<"Profissional"> | string
+    especialidade?: StringFilter<"Profissional"> | string
+    agendamentos?: AgendamentoListRelationFilter
+  }
+
+  export type ProfissionalOrderByWithRelationInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    especialidade?: SortOrder
+    agendamentos?: AgendamentoOrderByRelationAggregateInput
+    _relevance?: ProfissionalOrderByRelevanceInput
+  }
+
+  export type ProfissionalWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ProfissionalWhereInput | ProfissionalWhereInput[]
+    OR?: ProfissionalWhereInput[]
+    NOT?: ProfissionalWhereInput | ProfissionalWhereInput[]
+    nome?: StringFilter<"Profissional"> | string
+    especialidade?: StringFilter<"Profissional"> | string
+    agendamentos?: AgendamentoListRelationFilter
+  }, "id">
+
+  export type ProfissionalOrderByWithAggregationInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    especialidade?: SortOrder
+    _count?: ProfissionalCountOrderByAggregateInput
+    _avg?: ProfissionalAvgOrderByAggregateInput
+    _max?: ProfissionalMaxOrderByAggregateInput
+    _min?: ProfissionalMinOrderByAggregateInput
+    _sum?: ProfissionalSumOrderByAggregateInput
+  }
+
+  export type ProfissionalScalarWhereWithAggregatesInput = {
+    AND?: ProfissionalScalarWhereWithAggregatesInput | ProfissionalScalarWhereWithAggregatesInput[]
+    OR?: ProfissionalScalarWhereWithAggregatesInput[]
+    NOT?: ProfissionalScalarWhereWithAggregatesInput | ProfissionalScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Profissional"> | number
+    nome?: StringWithAggregatesFilter<"Profissional"> | string
+    especialidade?: StringWithAggregatesFilter<"Profissional"> | string
+  }
+
+  export type ServicoWhereInput = {
+    AND?: ServicoWhereInput | ServicoWhereInput[]
+    OR?: ServicoWhereInput[]
+    NOT?: ServicoWhereInput | ServicoWhereInput[]
+    id?: IntFilter<"Servico"> | number
+    descricao?: StringFilter<"Servico"> | string
+    preco?: FloatFilter<"Servico"> | number
+    agendamentos?: AgendamentoListRelationFilter
+  }
+
+  export type ServicoOrderByWithRelationInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+    preco?: SortOrder
+    agendamentos?: AgendamentoOrderByRelationAggregateInput
+    _relevance?: ServicoOrderByRelevanceInput
+  }
+
+  export type ServicoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ServicoWhereInput | ServicoWhereInput[]
+    OR?: ServicoWhereInput[]
+    NOT?: ServicoWhereInput | ServicoWhereInput[]
+    descricao?: StringFilter<"Servico"> | string
+    preco?: FloatFilter<"Servico"> | number
+    agendamentos?: AgendamentoListRelationFilter
+  }, "id">
+
+  export type ServicoOrderByWithAggregationInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+    preco?: SortOrder
+    _count?: ServicoCountOrderByAggregateInput
+    _avg?: ServicoAvgOrderByAggregateInput
+    _max?: ServicoMaxOrderByAggregateInput
+    _min?: ServicoMinOrderByAggregateInput
+    _sum?: ServicoSumOrderByAggregateInput
+  }
+
+  export type ServicoScalarWhereWithAggregatesInput = {
+    AND?: ServicoScalarWhereWithAggregatesInput | ServicoScalarWhereWithAggregatesInput[]
+    OR?: ServicoScalarWhereWithAggregatesInput[]
+    NOT?: ServicoScalarWhereWithAggregatesInput | ServicoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Servico"> | number
+    descricao?: StringWithAggregatesFilter<"Servico"> | string
+    preco?: FloatWithAggregatesFilter<"Servico"> | number
+  }
+
+  export type AgendamentoWhereInput = {
+    AND?: AgendamentoWhereInput | AgendamentoWhereInput[]
+    OR?: AgendamentoWhereInput[]
+    NOT?: AgendamentoWhereInput | AgendamentoWhereInput[]
+    id?: IntFilter<"Agendamento"> | number
+    dataHora?: DateTimeFilter<"Agendamento"> | Date | string
+    clienteId?: IntFilter<"Agendamento"> | number
+    profissionalId?: IntFilter<"Agendamento"> | number
+    servicoId?: IntFilter<"Agendamento"> | number
+    clientes?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    profissional?: XOR<ProfissionalScalarRelationFilter, ProfissionalWhereInput>
+    servico?: XOR<ServicoScalarRelationFilter, ServicoWhereInput>
+  }
+
+  export type AgendamentoOrderByWithRelationInput = {
+    id?: SortOrder
+    dataHora?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+    clientes?: ClientOrderByWithRelationInput
+    profissional?: ProfissionalOrderByWithRelationInput
+    servico?: ServicoOrderByWithRelationInput
+  }
+
+  export type AgendamentoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AgendamentoWhereInput | AgendamentoWhereInput[]
+    OR?: AgendamentoWhereInput[]
+    NOT?: AgendamentoWhereInput | AgendamentoWhereInput[]
+    dataHora?: DateTimeFilter<"Agendamento"> | Date | string
+    clienteId?: IntFilter<"Agendamento"> | number
+    profissionalId?: IntFilter<"Agendamento"> | number
+    servicoId?: IntFilter<"Agendamento"> | number
+    clientes?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    profissional?: XOR<ProfissionalScalarRelationFilter, ProfissionalWhereInput>
+    servico?: XOR<ServicoScalarRelationFilter, ServicoWhereInput>
+  }, "id">
+
+  export type AgendamentoOrderByWithAggregationInput = {
+    id?: SortOrder
+    dataHora?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+    _count?: AgendamentoCountOrderByAggregateInput
+    _avg?: AgendamentoAvgOrderByAggregateInput
+    _max?: AgendamentoMaxOrderByAggregateInput
+    _min?: AgendamentoMinOrderByAggregateInput
+    _sum?: AgendamentoSumOrderByAggregateInput
+  }
+
+  export type AgendamentoScalarWhereWithAggregatesInput = {
+    AND?: AgendamentoScalarWhereWithAggregatesInput | AgendamentoScalarWhereWithAggregatesInput[]
+    OR?: AgendamentoScalarWhereWithAggregatesInput[]
+    NOT?: AgendamentoScalarWhereWithAggregatesInput | AgendamentoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Agendamento"> | number
+    dataHora?: DateTimeWithAggregatesFilter<"Agendamento"> | Date | string
+    clienteId?: IntWithAggregatesFilter<"Agendamento"> | number
+    profissionalId?: IntWithAggregatesFilter<"Agendamento"> | number
+    servicoId?: IntWithAggregatesFilter<"Agendamento"> | number
+  }
+
   export type ClientCreateInput = {
     nome: string
     telefone: string
     email?: string | null
     dataCadastro?: Date | string
+    agendamentos?: AgendamentoCreateNestedManyWithoutClientesInput
   }
 
   export type ClientUncheckedCreateInput = {
@@ -1923,6 +5465,7 @@ export namespace Prisma {
     telefone: string
     email?: string | null
     dataCadastro?: Date | string
+    agendamentos?: AgendamentoUncheckedCreateNestedManyWithoutClientesInput
   }
 
   export type ClientUpdateInput = {
@@ -1930,6 +5473,7 @@ export namespace Prisma {
     telefone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    agendamentos?: AgendamentoUpdateManyWithoutClientesNestedInput
   }
 
   export type ClientUncheckedUpdateInput = {
@@ -1938,6 +5482,7 @@ export namespace Prisma {
     telefone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    agendamentos?: AgendamentoUncheckedUpdateManyWithoutClientesNestedInput
   }
 
   export type ClientCreateManyInput = {
@@ -1961,6 +5506,142 @@ export namespace Prisma {
     telefone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfissionalCreateInput = {
+    nome: string
+    especialidade: string
+    agendamentos?: AgendamentoCreateNestedManyWithoutProfissionalInput
+  }
+
+  export type ProfissionalUncheckedCreateInput = {
+    id?: number
+    nome: string
+    especialidade: string
+    agendamentos?: AgendamentoUncheckedCreateNestedManyWithoutProfissionalInput
+  }
+
+  export type ProfissionalUpdateInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    especialidade?: StringFieldUpdateOperationsInput | string
+    agendamentos?: AgendamentoUpdateManyWithoutProfissionalNestedInput
+  }
+
+  export type ProfissionalUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    especialidade?: StringFieldUpdateOperationsInput | string
+    agendamentos?: AgendamentoUncheckedUpdateManyWithoutProfissionalNestedInput
+  }
+
+  export type ProfissionalCreateManyInput = {
+    id?: number
+    nome: string
+    especialidade: string
+  }
+
+  export type ProfissionalUpdateManyMutationInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    especialidade?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProfissionalUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    especialidade?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ServicoCreateInput = {
+    descricao: string
+    preco: number
+    agendamentos?: AgendamentoCreateNestedManyWithoutServicoInput
+  }
+
+  export type ServicoUncheckedCreateInput = {
+    id?: number
+    descricao: string
+    preco: number
+    agendamentos?: AgendamentoUncheckedCreateNestedManyWithoutServicoInput
+  }
+
+  export type ServicoUpdateInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    agendamentos?: AgendamentoUpdateManyWithoutServicoNestedInput
+  }
+
+  export type ServicoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    agendamentos?: AgendamentoUncheckedUpdateManyWithoutServicoNestedInput
+  }
+
+  export type ServicoCreateManyInput = {
+    id?: number
+    descricao: string
+    preco: number
+  }
+
+  export type ServicoUpdateManyMutationInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ServicoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoCreateInput = {
+    dataHora: Date | string
+    clientes: ClientCreateNestedOneWithoutAgendamentosInput
+    profissional: ProfissionalCreateNestedOneWithoutAgendamentosInput
+    servico: ServicoCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AgendamentoUncheckedCreateInput = {
+    id?: number
+    dataHora: Date | string
+    clienteId: number
+    profissionalId: number
+    servicoId: number
+  }
+
+  export type AgendamentoUpdateInput = {
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientes?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
+    profissional?: ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput
+    servico?: ServicoUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AgendamentoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clienteId?: IntFieldUpdateOperationsInput | number
+    profissionalId?: IntFieldUpdateOperationsInput | number
+    servicoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoCreateManyInput = {
+    id?: number
+    dataHora: Date | string
+    clienteId: number
+    profissionalId: number
+    servicoId: number
+  }
+
+  export type AgendamentoUpdateManyMutationInput = {
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AgendamentoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clienteId?: IntFieldUpdateOperationsInput | number
+    profissionalId?: IntFieldUpdateOperationsInput | number
+    servicoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2015,9 +5696,19 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type AgendamentoListRelationFilter = {
+    every?: AgendamentoWhereInput
+    some?: AgendamentoWhereInput
+    none?: AgendamentoWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type AgendamentoOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type ClientOrderByRelevanceInput = {
@@ -2124,6 +5815,166 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type ProfissionalOrderByRelevanceInput = {
+    fields: ProfissionalOrderByRelevanceFieldEnum | ProfissionalOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ProfissionalCountOrderByAggregateInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    especialidade?: SortOrder
+  }
+
+  export type ProfissionalAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ProfissionalMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    especialidade?: SortOrder
+  }
+
+  export type ProfissionalMinOrderByAggregateInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    especialidade?: SortOrder
+  }
+
+  export type ProfissionalSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type ServicoOrderByRelevanceInput = {
+    fields: ServicoOrderByRelevanceFieldEnum | ServicoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ServicoCountOrderByAggregateInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+    preco?: SortOrder
+  }
+
+  export type ServicoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    preco?: SortOrder
+  }
+
+  export type ServicoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+    preco?: SortOrder
+  }
+
+  export type ServicoMinOrderByAggregateInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+    preco?: SortOrder
+  }
+
+  export type ServicoSumOrderByAggregateInput = {
+    id?: SortOrder
+    preco?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type ClientScalarRelationFilter = {
+    is?: ClientWhereInput
+    isNot?: ClientWhereInput
+  }
+
+  export type ProfissionalScalarRelationFilter = {
+    is?: ProfissionalWhereInput
+    isNot?: ProfissionalWhereInput
+  }
+
+  export type ServicoScalarRelationFilter = {
+    is?: ServicoWhereInput
+    isNot?: ServicoWhereInput
+  }
+
+  export type AgendamentoCountOrderByAggregateInput = {
+    id?: SortOrder
+    dataHora?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+  }
+
+  export type AgendamentoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+  }
+
+  export type AgendamentoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dataHora?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+  }
+
+  export type AgendamentoMinOrderByAggregateInput = {
+    id?: SortOrder
+    dataHora?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+  }
+
+  export type AgendamentoSumOrderByAggregateInput = {
+    id?: SortOrder
+    clienteId?: SortOrder
+    profissionalId?: SortOrder
+    servicoId?: SortOrder
+  }
+
+  export type AgendamentoCreateNestedManyWithoutClientesInput = {
+    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
+    createMany?: AgendamentoCreateManyClientesInputEnvelope
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+  }
+
+  export type AgendamentoUncheckedCreateNestedManyWithoutClientesInput = {
+    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
+    createMany?: AgendamentoCreateManyClientesInputEnvelope
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2136,12 +5987,174 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type AgendamentoUpdateManyWithoutClientesNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutClientesInput | AgendamentoUpsertWithWhereUniqueWithoutClientesInput[]
+    createMany?: AgendamentoCreateManyClientesInputEnvelope
+    set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutClientesInput | AgendamentoUpdateWithWhereUniqueWithoutClientesInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutClientesInput | AgendamentoUpdateManyWithWhereWithoutClientesInput[]
+    deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type AgendamentoUncheckedUpdateManyWithoutClientesNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutClientesInput | AgendamentoUpsertWithWhereUniqueWithoutClientesInput[]
+    createMany?: AgendamentoCreateManyClientesInputEnvelope
+    set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutClientesInput | AgendamentoUpdateWithWhereUniqueWithoutClientesInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutClientesInput | AgendamentoUpdateManyWithWhereWithoutClientesInput[]
+    deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+  }
+
+  export type AgendamentoCreateNestedManyWithoutProfissionalInput = {
+    create?: XOR<AgendamentoCreateWithoutProfissionalInput, AgendamentoUncheckedCreateWithoutProfissionalInput> | AgendamentoCreateWithoutProfissionalInput[] | AgendamentoUncheckedCreateWithoutProfissionalInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutProfissionalInput | AgendamentoCreateOrConnectWithoutProfissionalInput[]
+    createMany?: AgendamentoCreateManyProfissionalInputEnvelope
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+  }
+
+  export type AgendamentoUncheckedCreateNestedManyWithoutProfissionalInput = {
+    create?: XOR<AgendamentoCreateWithoutProfissionalInput, AgendamentoUncheckedCreateWithoutProfissionalInput> | AgendamentoCreateWithoutProfissionalInput[] | AgendamentoUncheckedCreateWithoutProfissionalInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutProfissionalInput | AgendamentoCreateOrConnectWithoutProfissionalInput[]
+    createMany?: AgendamentoCreateManyProfissionalInputEnvelope
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+  }
+
+  export type AgendamentoUpdateManyWithoutProfissionalNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutProfissionalInput, AgendamentoUncheckedCreateWithoutProfissionalInput> | AgendamentoCreateWithoutProfissionalInput[] | AgendamentoUncheckedCreateWithoutProfissionalInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutProfissionalInput | AgendamentoCreateOrConnectWithoutProfissionalInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutProfissionalInput | AgendamentoUpsertWithWhereUniqueWithoutProfissionalInput[]
+    createMany?: AgendamentoCreateManyProfissionalInputEnvelope
+    set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutProfissionalInput | AgendamentoUpdateWithWhereUniqueWithoutProfissionalInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutProfissionalInput | AgendamentoUpdateManyWithWhereWithoutProfissionalInput[]
+    deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+  }
+
+  export type AgendamentoUncheckedUpdateManyWithoutProfissionalNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutProfissionalInput, AgendamentoUncheckedCreateWithoutProfissionalInput> | AgendamentoCreateWithoutProfissionalInput[] | AgendamentoUncheckedCreateWithoutProfissionalInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutProfissionalInput | AgendamentoCreateOrConnectWithoutProfissionalInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutProfissionalInput | AgendamentoUpsertWithWhereUniqueWithoutProfissionalInput[]
+    createMany?: AgendamentoCreateManyProfissionalInputEnvelope
+    set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutProfissionalInput | AgendamentoUpdateWithWhereUniqueWithoutProfissionalInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutProfissionalInput | AgendamentoUpdateManyWithWhereWithoutProfissionalInput[]
+    deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+  }
+
+  export type AgendamentoCreateNestedManyWithoutServicoInput = {
+    create?: XOR<AgendamentoCreateWithoutServicoInput, AgendamentoUncheckedCreateWithoutServicoInput> | AgendamentoCreateWithoutServicoInput[] | AgendamentoUncheckedCreateWithoutServicoInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutServicoInput | AgendamentoCreateOrConnectWithoutServicoInput[]
+    createMany?: AgendamentoCreateManyServicoInputEnvelope
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+  }
+
+  export type AgendamentoUncheckedCreateNestedManyWithoutServicoInput = {
+    create?: XOR<AgendamentoCreateWithoutServicoInput, AgendamentoUncheckedCreateWithoutServicoInput> | AgendamentoCreateWithoutServicoInput[] | AgendamentoUncheckedCreateWithoutServicoInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutServicoInput | AgendamentoCreateOrConnectWithoutServicoInput[]
+    createMany?: AgendamentoCreateManyServicoInputEnvelope
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type AgendamentoUpdateManyWithoutServicoNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutServicoInput, AgendamentoUncheckedCreateWithoutServicoInput> | AgendamentoCreateWithoutServicoInput[] | AgendamentoUncheckedCreateWithoutServicoInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutServicoInput | AgendamentoCreateOrConnectWithoutServicoInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutServicoInput | AgendamentoUpsertWithWhereUniqueWithoutServicoInput[]
+    createMany?: AgendamentoCreateManyServicoInputEnvelope
+    set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutServicoInput | AgendamentoUpdateWithWhereUniqueWithoutServicoInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutServicoInput | AgendamentoUpdateManyWithWhereWithoutServicoInput[]
+    deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+  }
+
+  export type AgendamentoUncheckedUpdateManyWithoutServicoNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutServicoInput, AgendamentoUncheckedCreateWithoutServicoInput> | AgendamentoCreateWithoutServicoInput[] | AgendamentoUncheckedCreateWithoutServicoInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutServicoInput | AgendamentoCreateOrConnectWithoutServicoInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutServicoInput | AgendamentoUpsertWithWhereUniqueWithoutServicoInput[]
+    createMany?: AgendamentoCreateManyServicoInputEnvelope
+    set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutServicoInput | AgendamentoUpdateWithWhereUniqueWithoutServicoInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutServicoInput | AgendamentoUpdateManyWithWhereWithoutServicoInput[]
+    deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+  }
+
+  export type ClientCreateNestedOneWithoutAgendamentosInput = {
+    create?: XOR<ClientCreateWithoutAgendamentosInput, ClientUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutAgendamentosInput
+    connect?: ClientWhereUniqueInput
+  }
+
+  export type ProfissionalCreateNestedOneWithoutAgendamentosInput = {
+    create?: XOR<ProfissionalCreateWithoutAgendamentosInput, ProfissionalUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: ProfissionalCreateOrConnectWithoutAgendamentosInput
+    connect?: ProfissionalWhereUniqueInput
+  }
+
+  export type ServicoCreateNestedOneWithoutAgendamentosInput = {
+    create?: XOR<ServicoCreateWithoutAgendamentosInput, ServicoUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: ServicoCreateOrConnectWithoutAgendamentosInput
+    connect?: ServicoWhereUniqueInput
+  }
+
+  export type ClientUpdateOneRequiredWithoutAgendamentosNestedInput = {
+    create?: XOR<ClientCreateWithoutAgendamentosInput, ClientUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutAgendamentosInput
+    upsert?: ClientUpsertWithoutAgendamentosInput
+    connect?: ClientWhereUniqueInput
+    update?: XOR<XOR<ClientUpdateToOneWithWhereWithoutAgendamentosInput, ClientUpdateWithoutAgendamentosInput>, ClientUncheckedUpdateWithoutAgendamentosInput>
+  }
+
+  export type ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput = {
+    create?: XOR<ProfissionalCreateWithoutAgendamentosInput, ProfissionalUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: ProfissionalCreateOrConnectWithoutAgendamentosInput
+    upsert?: ProfissionalUpsertWithoutAgendamentosInput
+    connect?: ProfissionalWhereUniqueInput
+    update?: XOR<XOR<ProfissionalUpdateToOneWithWhereWithoutAgendamentosInput, ProfissionalUpdateWithoutAgendamentosInput>, ProfissionalUncheckedUpdateWithoutAgendamentosInput>
+  }
+
+  export type ServicoUpdateOneRequiredWithoutAgendamentosNestedInput = {
+    create?: XOR<ServicoCreateWithoutAgendamentosInput, ServicoUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: ServicoCreateOrConnectWithoutAgendamentosInput
+    upsert?: ServicoUpsertWithoutAgendamentosInput
+    connect?: ServicoWhereUniqueInput
+    update?: XOR<XOR<ServicoUpdateToOneWithWhereWithoutAgendamentosInput, ServicoUpdateWithoutAgendamentosInput>, ServicoUncheckedUpdateWithoutAgendamentosInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2282,6 +6295,353 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type AgendamentoCreateWithoutClientesInput = {
+    dataHora: Date | string
+    profissional: ProfissionalCreateNestedOneWithoutAgendamentosInput
+    servico: ServicoCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AgendamentoUncheckedCreateWithoutClientesInput = {
+    id?: number
+    dataHora: Date | string
+    profissionalId: number
+    servicoId: number
+  }
+
+  export type AgendamentoCreateOrConnectWithoutClientesInput = {
+    where: AgendamentoWhereUniqueInput
+    create: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput>
+  }
+
+  export type AgendamentoCreateManyClientesInputEnvelope = {
+    data: AgendamentoCreateManyClientesInput | AgendamentoCreateManyClientesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AgendamentoUpsertWithWhereUniqueWithoutClientesInput = {
+    where: AgendamentoWhereUniqueInput
+    update: XOR<AgendamentoUpdateWithoutClientesInput, AgendamentoUncheckedUpdateWithoutClientesInput>
+    create: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput>
+  }
+
+  export type AgendamentoUpdateWithWhereUniqueWithoutClientesInput = {
+    where: AgendamentoWhereUniqueInput
+    data: XOR<AgendamentoUpdateWithoutClientesInput, AgendamentoUncheckedUpdateWithoutClientesInput>
+  }
+
+  export type AgendamentoUpdateManyWithWhereWithoutClientesInput = {
+    where: AgendamentoScalarWhereInput
+    data: XOR<AgendamentoUpdateManyMutationInput, AgendamentoUncheckedUpdateManyWithoutClientesInput>
+  }
+
+  export type AgendamentoScalarWhereInput = {
+    AND?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+    OR?: AgendamentoScalarWhereInput[]
+    NOT?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
+    id?: IntFilter<"Agendamento"> | number
+    dataHora?: DateTimeFilter<"Agendamento"> | Date | string
+    clienteId?: IntFilter<"Agendamento"> | number
+    profissionalId?: IntFilter<"Agendamento"> | number
+    servicoId?: IntFilter<"Agendamento"> | number
+  }
+
+  export type AgendamentoCreateWithoutProfissionalInput = {
+    dataHora: Date | string
+    clientes: ClientCreateNestedOneWithoutAgendamentosInput
+    servico: ServicoCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AgendamentoUncheckedCreateWithoutProfissionalInput = {
+    id?: number
+    dataHora: Date | string
+    clienteId: number
+    servicoId: number
+  }
+
+  export type AgendamentoCreateOrConnectWithoutProfissionalInput = {
+    where: AgendamentoWhereUniqueInput
+    create: XOR<AgendamentoCreateWithoutProfissionalInput, AgendamentoUncheckedCreateWithoutProfissionalInput>
+  }
+
+  export type AgendamentoCreateManyProfissionalInputEnvelope = {
+    data: AgendamentoCreateManyProfissionalInput | AgendamentoCreateManyProfissionalInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AgendamentoUpsertWithWhereUniqueWithoutProfissionalInput = {
+    where: AgendamentoWhereUniqueInput
+    update: XOR<AgendamentoUpdateWithoutProfissionalInput, AgendamentoUncheckedUpdateWithoutProfissionalInput>
+    create: XOR<AgendamentoCreateWithoutProfissionalInput, AgendamentoUncheckedCreateWithoutProfissionalInput>
+  }
+
+  export type AgendamentoUpdateWithWhereUniqueWithoutProfissionalInput = {
+    where: AgendamentoWhereUniqueInput
+    data: XOR<AgendamentoUpdateWithoutProfissionalInput, AgendamentoUncheckedUpdateWithoutProfissionalInput>
+  }
+
+  export type AgendamentoUpdateManyWithWhereWithoutProfissionalInput = {
+    where: AgendamentoScalarWhereInput
+    data: XOR<AgendamentoUpdateManyMutationInput, AgendamentoUncheckedUpdateManyWithoutProfissionalInput>
+  }
+
+  export type AgendamentoCreateWithoutServicoInput = {
+    dataHora: Date | string
+    clientes: ClientCreateNestedOneWithoutAgendamentosInput
+    profissional: ProfissionalCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AgendamentoUncheckedCreateWithoutServicoInput = {
+    id?: number
+    dataHora: Date | string
+    clienteId: number
+    profissionalId: number
+  }
+
+  export type AgendamentoCreateOrConnectWithoutServicoInput = {
+    where: AgendamentoWhereUniqueInput
+    create: XOR<AgendamentoCreateWithoutServicoInput, AgendamentoUncheckedCreateWithoutServicoInput>
+  }
+
+  export type AgendamentoCreateManyServicoInputEnvelope = {
+    data: AgendamentoCreateManyServicoInput | AgendamentoCreateManyServicoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AgendamentoUpsertWithWhereUniqueWithoutServicoInput = {
+    where: AgendamentoWhereUniqueInput
+    update: XOR<AgendamentoUpdateWithoutServicoInput, AgendamentoUncheckedUpdateWithoutServicoInput>
+    create: XOR<AgendamentoCreateWithoutServicoInput, AgendamentoUncheckedCreateWithoutServicoInput>
+  }
+
+  export type AgendamentoUpdateWithWhereUniqueWithoutServicoInput = {
+    where: AgendamentoWhereUniqueInput
+    data: XOR<AgendamentoUpdateWithoutServicoInput, AgendamentoUncheckedUpdateWithoutServicoInput>
+  }
+
+  export type AgendamentoUpdateManyWithWhereWithoutServicoInput = {
+    where: AgendamentoScalarWhereInput
+    data: XOR<AgendamentoUpdateManyMutationInput, AgendamentoUncheckedUpdateManyWithoutServicoInput>
+  }
+
+  export type ClientCreateWithoutAgendamentosInput = {
+    nome: string
+    telefone: string
+    email?: string | null
+    dataCadastro?: Date | string
+  }
+
+  export type ClientUncheckedCreateWithoutAgendamentosInput = {
+    id?: number
+    nome: string
+    telefone: string
+    email?: string | null
+    dataCadastro?: Date | string
+  }
+
+  export type ClientCreateOrConnectWithoutAgendamentosInput = {
+    where: ClientWhereUniqueInput
+    create: XOR<ClientCreateWithoutAgendamentosInput, ClientUncheckedCreateWithoutAgendamentosInput>
+  }
+
+  export type ProfissionalCreateWithoutAgendamentosInput = {
+    nome: string
+    especialidade: string
+  }
+
+  export type ProfissionalUncheckedCreateWithoutAgendamentosInput = {
+    id?: number
+    nome: string
+    especialidade: string
+  }
+
+  export type ProfissionalCreateOrConnectWithoutAgendamentosInput = {
+    where: ProfissionalWhereUniqueInput
+    create: XOR<ProfissionalCreateWithoutAgendamentosInput, ProfissionalUncheckedCreateWithoutAgendamentosInput>
+  }
+
+  export type ServicoCreateWithoutAgendamentosInput = {
+    descricao: string
+    preco: number
+  }
+
+  export type ServicoUncheckedCreateWithoutAgendamentosInput = {
+    id?: number
+    descricao: string
+    preco: number
+  }
+
+  export type ServicoCreateOrConnectWithoutAgendamentosInput = {
+    where: ServicoWhereUniqueInput
+    create: XOR<ServicoCreateWithoutAgendamentosInput, ServicoUncheckedCreateWithoutAgendamentosInput>
+  }
+
+  export type ClientUpsertWithoutAgendamentosInput = {
+    update: XOR<ClientUpdateWithoutAgendamentosInput, ClientUncheckedUpdateWithoutAgendamentosInput>
+    create: XOR<ClientCreateWithoutAgendamentosInput, ClientUncheckedCreateWithoutAgendamentosInput>
+    where?: ClientWhereInput
+  }
+
+  export type ClientUpdateToOneWithWhereWithoutAgendamentosInput = {
+    where?: ClientWhereInput
+    data: XOR<ClientUpdateWithoutAgendamentosInput, ClientUncheckedUpdateWithoutAgendamentosInput>
+  }
+
+  export type ClientUpdateWithoutAgendamentosInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClientUncheckedUpdateWithoutAgendamentosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfissionalUpsertWithoutAgendamentosInput = {
+    update: XOR<ProfissionalUpdateWithoutAgendamentosInput, ProfissionalUncheckedUpdateWithoutAgendamentosInput>
+    create: XOR<ProfissionalCreateWithoutAgendamentosInput, ProfissionalUncheckedCreateWithoutAgendamentosInput>
+    where?: ProfissionalWhereInput
+  }
+
+  export type ProfissionalUpdateToOneWithWhereWithoutAgendamentosInput = {
+    where?: ProfissionalWhereInput
+    data: XOR<ProfissionalUpdateWithoutAgendamentosInput, ProfissionalUncheckedUpdateWithoutAgendamentosInput>
+  }
+
+  export type ProfissionalUpdateWithoutAgendamentosInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    especialidade?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProfissionalUncheckedUpdateWithoutAgendamentosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    especialidade?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ServicoUpsertWithoutAgendamentosInput = {
+    update: XOR<ServicoUpdateWithoutAgendamentosInput, ServicoUncheckedUpdateWithoutAgendamentosInput>
+    create: XOR<ServicoCreateWithoutAgendamentosInput, ServicoUncheckedCreateWithoutAgendamentosInput>
+    where?: ServicoWhereInput
+  }
+
+  export type ServicoUpdateToOneWithWhereWithoutAgendamentosInput = {
+    where?: ServicoWhereInput
+    data: XOR<ServicoUpdateWithoutAgendamentosInput, ServicoUncheckedUpdateWithoutAgendamentosInput>
+  }
+
+  export type ServicoUpdateWithoutAgendamentosInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ServicoUncheckedUpdateWithoutAgendamentosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoCreateManyClientesInput = {
+    id?: number
+    dataHora: Date | string
+    profissionalId: number
+    servicoId: number
+  }
+
+  export type AgendamentoUpdateWithoutClientesInput = {
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    profissional?: ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput
+    servico?: ServicoUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AgendamentoUncheckedUpdateWithoutClientesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    profissionalId?: IntFieldUpdateOperationsInput | number
+    servicoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoUncheckedUpdateManyWithoutClientesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    profissionalId?: IntFieldUpdateOperationsInput | number
+    servicoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoCreateManyProfissionalInput = {
+    id?: number
+    dataHora: Date | string
+    clienteId: number
+    servicoId: number
+  }
+
+  export type AgendamentoUpdateWithoutProfissionalInput = {
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientes?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
+    servico?: ServicoUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AgendamentoUncheckedUpdateWithoutProfissionalInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clienteId?: IntFieldUpdateOperationsInput | number
+    servicoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoUncheckedUpdateManyWithoutProfissionalInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clienteId?: IntFieldUpdateOperationsInput | number
+    servicoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoCreateManyServicoInput = {
+    id?: number
+    dataHora: Date | string
+    clienteId: number
+    profissionalId: number
+  }
+
+  export type AgendamentoUpdateWithoutServicoInput = {
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientes?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
+    profissional?: ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AgendamentoUncheckedUpdateWithoutServicoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clienteId?: IntFieldUpdateOperationsInput | number
+    profissionalId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AgendamentoUncheckedUpdateManyWithoutServicoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    clienteId?: IntFieldUpdateOperationsInput | number
+    profissionalId?: IntFieldUpdateOperationsInput | number
   }
 
 

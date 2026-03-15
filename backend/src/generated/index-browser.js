@@ -129,6 +129,26 @@ exports.Prisma.ClientScalarFieldEnum = {
   dataCadastro: 'dataCadastro'
 };
 
+exports.Prisma.ProfissionalScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  especialidade: 'especialidade'
+};
+
+exports.Prisma.ServicoScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao',
+  preco: 'preco'
+};
+
+exports.Prisma.AgendamentoScalarFieldEnum = {
+  id: 'id',
+  dataHora: 'dataHora',
+  clienteId: 'clienteId',
+  profissionalId: 'profissionalId',
+  servicoId: 'servicoId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -145,9 +165,21 @@ exports.Prisma.ClientOrderByRelevanceFieldEnum = {
   email: 'email'
 };
 
+exports.Prisma.ProfissionalOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  especialidade: 'especialidade'
+};
+
+exports.Prisma.ServicoOrderByRelevanceFieldEnum = {
+  descricao: 'descricao'
+};
+
 
 exports.Prisma.ModelName = {
-  Client: 'Client'
+  Client: 'Client',
+  Profissional: 'Profissional',
+  Servico: 'Servico',
+  Agendamento: 'Agendamento'
 };
 
 /**
