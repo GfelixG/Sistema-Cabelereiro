@@ -164,7 +164,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\gabri\\OneDrive\\Documentos\\Sistema-Cabelereiro\\backend\\src\\generated",
+      "value": "C:\\Users\\luizt\\OneDrive\\Área de Trabalho\\Projects\\projetoBanco\\Sistema-Cabelereiro\\backend\\src\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -178,7 +178,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\gabri\\OneDrive\\Documentos\\Sistema-Cabelereiro\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\luizt\\OneDrive\\Área de Trabalho\\Projects\\projetoBanco\\Sistema-Cabelereiro\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -192,7 +192,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -201,13 +200,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Client {\n  id           Int           @id @default(autoincrement())\n  nome         String        @db.VarChar(100)\n  telefone     String        @unique @db.VarChar(15)\n  email        String?       @unique @db.VarChar(100)\n  dataCadastro DateTime      @default(now()) @map(\"data_cadastro\") @db.DateTime(0)\n  agendamentos Agendamento[]\n\n  @@map(\"clientes\")\n}\n\nmodel Profissional {\n  id            Int           @id @default(autoincrement())\n  nome          String\n  especialidade String\n  agendamentos  Agendamento[]\n}\n\nmodel Servico {\n  id           Int           @id @default(autoincrement())\n  descricao    String\n  preco        Float\n  agendamentos Agendamento[]\n}\n\nmodel Agendamento {\n  id             Int      @id @default(autoincrement())\n  dataHora       DateTime\n  clienteId      Int\n  profissionalId Int\n  servicoId      Int\n\n  clientes     Client       @relation(fields: [clienteId], references: [id])\n  profissional Profissional @relation(fields: [profissionalId], references: [id])\n  servico      Servico      @relation(fields: [servicoId], references: [id])\n}\n",
-  "inlineSchemaHash": "d5da271ef1410f1c304d971f9015e060589a3444cc633fb332485c78777f0925",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Client {\n  id           Int           @id @default(autoincrement())\n  nome         String        @db.VarChar(100)\n  telefone     String        @unique @db.VarChar(15)\n  email        String?       @unique @db.VarChar(100)\n  dataCadastro DateTime      @default(now()) @map(\"data_cadastro\") @db.DateTime(0)\n  agendamentos Agendamento[]\n\n  @@map(\"clientes\")\n}\n\nmodel Profissional {\n  id            Int           @id @default(autoincrement())\n  nome          String\n  especialidade String\n  agendamentos  Agendamento[]\n}\n\nmodel Servico {\n  id           Int           @id @default(autoincrement())\n  descricao    String\n  preco        Float\n  agendamentos Agendamento[]\n}\n\nmodel Agendamento {\n  id             Int      @id @default(autoincrement())\n  dataHora       DateTime\n  clienteId      Int\n  profissionalId Int\n  servicoId      Int\n\n  cliente      Client       @relation(fields: [clienteId], references: [id])\n  profissional Profissional @relation(fields: [profissionalId], references: [id])\n  servico      Servico      @relation(fields: [servicoId], references: [id])\n}\n",
+  "inlineSchemaHash": "48097245b3a07d2d76475dd8ec99f83b1d66520e5ae877ac6714101e4ced3732",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Client\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dataCadastro\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"data_cadastro\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToClient\"}],\"dbName\":\"clientes\"},\"Profissional\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"especialidade\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToProfissional\"}],\"dbName\":null},\"Servico\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToServico\"}],\"dbName\":null},\"Agendamento\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dataHora\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clienteId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"profissionalId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"servicoId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"clientes\",\"kind\":\"object\",\"type\":\"Client\",\"relationName\":\"AgendamentoToClient\"},{\"name\":\"profissional\",\"kind\":\"object\",\"type\":\"Profissional\",\"relationName\":\"AgendamentoToProfissional\"},{\"name\":\"servico\",\"kind\":\"object\",\"type\":\"Servico\",\"relationName\":\"AgendamentoToServico\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Client\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dataCadastro\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"data_cadastro\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToClient\"}],\"dbName\":\"clientes\"},\"Profissional\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"especialidade\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToProfissional\"}],\"dbName\":null},\"Servico\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToServico\"}],\"dbName\":null},\"Agendamento\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dataHora\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clienteId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"profissionalId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"servicoId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"cliente\",\"kind\":\"object\",\"type\":\"Client\",\"relationName\":\"AgendamentoToClient\"},{\"name\":\"profissional\",\"kind\":\"object\",\"type\":\"Profissional\",\"relationName\":\"AgendamentoToProfissional\"},{\"name\":\"servico\",\"kind\":\"object\",\"type\":\"Servico\",\"relationName\":\"AgendamentoToServico\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

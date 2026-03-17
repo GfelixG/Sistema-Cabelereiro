@@ -4331,7 +4331,7 @@ export namespace Prisma {
     clienteId?: boolean
     profissionalId?: boolean
     servicoId?: boolean
-    clientes?: boolean | ClientDefaultArgs<ExtArgs>
+    cliente?: boolean | ClientDefaultArgs<ExtArgs>
     profissional?: boolean | ProfissionalDefaultArgs<ExtArgs>
     servico?: boolean | ServicoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["agendamento"]>
@@ -4348,7 +4348,7 @@ export namespace Prisma {
 
   export type AgendamentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dataHora" | "clienteId" | "profissionalId" | "servicoId", ExtArgs["result"]["agendamento"]>
   export type AgendamentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    clientes?: boolean | ClientDefaultArgs<ExtArgs>
+    cliente?: boolean | ClientDefaultArgs<ExtArgs>
     profissional?: boolean | ProfissionalDefaultArgs<ExtArgs>
     servico?: boolean | ServicoDefaultArgs<ExtArgs>
   }
@@ -4356,7 +4356,7 @@ export namespace Prisma {
   export type $AgendamentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Agendamento"
     objects: {
-      clientes: Prisma.$ClientPayload<ExtArgs>
+      cliente: Prisma.$ClientPayload<ExtArgs>
       profissional: Prisma.$ProfissionalPayload<ExtArgs>
       servico: Prisma.$ServicoPayload<ExtArgs>
     }
@@ -4706,7 +4706,7 @@ export namespace Prisma {
    */
   export interface Prisma__AgendamentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    clientes<T extends ClientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientDefaultArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cliente<T extends ClientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientDefaultArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     profissional<T extends ProfissionalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfissionalDefaultArgs<ExtArgs>>): Prisma__ProfissionalClient<$Result.GetResult<Prisma.$ProfissionalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     servico<T extends ServicoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServicoDefaultArgs<ExtArgs>>): Prisma__ServicoClient<$Result.GetResult<Prisma.$ServicoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -5397,7 +5397,7 @@ export namespace Prisma {
     clienteId?: IntFilter<"Agendamento"> | number
     profissionalId?: IntFilter<"Agendamento"> | number
     servicoId?: IntFilter<"Agendamento"> | number
-    clientes?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    cliente?: XOR<ClientScalarRelationFilter, ClientWhereInput>
     profissional?: XOR<ProfissionalScalarRelationFilter, ProfissionalWhereInput>
     servico?: XOR<ServicoScalarRelationFilter, ServicoWhereInput>
   }
@@ -5408,7 +5408,7 @@ export namespace Prisma {
     clienteId?: SortOrder
     profissionalId?: SortOrder
     servicoId?: SortOrder
-    clientes?: ClientOrderByWithRelationInput
+    cliente?: ClientOrderByWithRelationInput
     profissional?: ProfissionalOrderByWithRelationInput
     servico?: ServicoOrderByWithRelationInput
   }
@@ -5422,7 +5422,7 @@ export namespace Prisma {
     clienteId?: IntFilter<"Agendamento"> | number
     profissionalId?: IntFilter<"Agendamento"> | number
     servicoId?: IntFilter<"Agendamento"> | number
-    clientes?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    cliente?: XOR<ClientScalarRelationFilter, ClientWhereInput>
     profissional?: XOR<ProfissionalScalarRelationFilter, ProfissionalWhereInput>
     servico?: XOR<ServicoScalarRelationFilter, ServicoWhereInput>
   }, "id">
@@ -5456,7 +5456,7 @@ export namespace Prisma {
     telefone: string
     email?: string | null
     dataCadastro?: Date | string
-    agendamentos?: AgendamentoCreateNestedManyWithoutClientesInput
+    agendamentos?: AgendamentoCreateNestedManyWithoutClienteInput
   }
 
   export type ClientUncheckedCreateInput = {
@@ -5465,7 +5465,7 @@ export namespace Prisma {
     telefone: string
     email?: string | null
     dataCadastro?: Date | string
-    agendamentos?: AgendamentoUncheckedCreateNestedManyWithoutClientesInput
+    agendamentos?: AgendamentoUncheckedCreateNestedManyWithoutClienteInput
   }
 
   export type ClientUpdateInput = {
@@ -5473,7 +5473,7 @@ export namespace Prisma {
     telefone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
-    agendamentos?: AgendamentoUpdateManyWithoutClientesNestedInput
+    agendamentos?: AgendamentoUpdateManyWithoutClienteNestedInput
   }
 
   export type ClientUncheckedUpdateInput = {
@@ -5482,7 +5482,7 @@ export namespace Prisma {
     telefone?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
-    agendamentos?: AgendamentoUncheckedUpdateManyWithoutClientesNestedInput
+    agendamentos?: AgendamentoUncheckedUpdateManyWithoutClienteNestedInput
   }
 
   export type ClientCreateManyInput = {
@@ -5596,7 +5596,7 @@ export namespace Prisma {
 
   export type AgendamentoCreateInput = {
     dataHora: Date | string
-    clientes: ClientCreateNestedOneWithoutAgendamentosInput
+    cliente: ClientCreateNestedOneWithoutAgendamentosInput
     profissional: ProfissionalCreateNestedOneWithoutAgendamentosInput
     servico: ServicoCreateNestedOneWithoutAgendamentosInput
   }
@@ -5611,7 +5611,7 @@ export namespace Prisma {
 
   export type AgendamentoUpdateInput = {
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
-    clientes?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
+    cliente?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
     profissional?: ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput
     servico?: ServicoUpdateOneRequiredWithoutAgendamentosNestedInput
   }
@@ -5961,17 +5961,17 @@ export namespace Prisma {
     servicoId?: SortOrder
   }
 
-  export type AgendamentoCreateNestedManyWithoutClientesInput = {
-    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
-    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
-    createMany?: AgendamentoCreateManyClientesInputEnvelope
+  export type AgendamentoCreateNestedManyWithoutClienteInput = {
+    create?: XOR<AgendamentoCreateWithoutClienteInput, AgendamentoUncheckedCreateWithoutClienteInput> | AgendamentoCreateWithoutClienteInput[] | AgendamentoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClienteInput | AgendamentoCreateOrConnectWithoutClienteInput[]
+    createMany?: AgendamentoCreateManyClienteInputEnvelope
     connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
   }
 
-  export type AgendamentoUncheckedCreateNestedManyWithoutClientesInput = {
-    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
-    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
-    createMany?: AgendamentoCreateManyClientesInputEnvelope
+  export type AgendamentoUncheckedCreateNestedManyWithoutClienteInput = {
+    create?: XOR<AgendamentoCreateWithoutClienteInput, AgendamentoUncheckedCreateWithoutClienteInput> | AgendamentoCreateWithoutClienteInput[] | AgendamentoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClienteInput | AgendamentoCreateOrConnectWithoutClienteInput[]
+    createMany?: AgendamentoCreateManyClienteInputEnvelope
     connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
   }
 
@@ -5987,17 +5987,17 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type AgendamentoUpdateManyWithoutClientesNestedInput = {
-    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
-    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
-    upsert?: AgendamentoUpsertWithWhereUniqueWithoutClientesInput | AgendamentoUpsertWithWhereUniqueWithoutClientesInput[]
-    createMany?: AgendamentoCreateManyClientesInputEnvelope
+  export type AgendamentoUpdateManyWithoutClienteNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutClienteInput, AgendamentoUncheckedCreateWithoutClienteInput> | AgendamentoCreateWithoutClienteInput[] | AgendamentoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClienteInput | AgendamentoCreateOrConnectWithoutClienteInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutClienteInput | AgendamentoUpsertWithWhereUniqueWithoutClienteInput[]
+    createMany?: AgendamentoCreateManyClienteInputEnvelope
     set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
     disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
     delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
     connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
-    update?: AgendamentoUpdateWithWhereUniqueWithoutClientesInput | AgendamentoUpdateWithWhereUniqueWithoutClientesInput[]
-    updateMany?: AgendamentoUpdateManyWithWhereWithoutClientesInput | AgendamentoUpdateManyWithWhereWithoutClientesInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutClienteInput | AgendamentoUpdateWithWhereUniqueWithoutClienteInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutClienteInput | AgendamentoUpdateManyWithWhereWithoutClienteInput[]
     deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
   }
 
@@ -6009,17 +6009,17 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type AgendamentoUncheckedUpdateManyWithoutClientesNestedInput = {
-    create?: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput> | AgendamentoCreateWithoutClientesInput[] | AgendamentoUncheckedCreateWithoutClientesInput[]
-    connectOrCreate?: AgendamentoCreateOrConnectWithoutClientesInput | AgendamentoCreateOrConnectWithoutClientesInput[]
-    upsert?: AgendamentoUpsertWithWhereUniqueWithoutClientesInput | AgendamentoUpsertWithWhereUniqueWithoutClientesInput[]
-    createMany?: AgendamentoCreateManyClientesInputEnvelope
+  export type AgendamentoUncheckedUpdateManyWithoutClienteNestedInput = {
+    create?: XOR<AgendamentoCreateWithoutClienteInput, AgendamentoUncheckedCreateWithoutClienteInput> | AgendamentoCreateWithoutClienteInput[] | AgendamentoUncheckedCreateWithoutClienteInput[]
+    connectOrCreate?: AgendamentoCreateOrConnectWithoutClienteInput | AgendamentoCreateOrConnectWithoutClienteInput[]
+    upsert?: AgendamentoUpsertWithWhereUniqueWithoutClienteInput | AgendamentoUpsertWithWhereUniqueWithoutClienteInput[]
+    createMany?: AgendamentoCreateManyClienteInputEnvelope
     set?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
     disconnect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
     delete?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
     connect?: AgendamentoWhereUniqueInput | AgendamentoWhereUniqueInput[]
-    update?: AgendamentoUpdateWithWhereUniqueWithoutClientesInput | AgendamentoUpdateWithWhereUniqueWithoutClientesInput[]
-    updateMany?: AgendamentoUpdateManyWithWhereWithoutClientesInput | AgendamentoUpdateManyWithWhereWithoutClientesInput[]
+    update?: AgendamentoUpdateWithWhereUniqueWithoutClienteInput | AgendamentoUpdateWithWhereUniqueWithoutClienteInput[]
+    updateMany?: AgendamentoUpdateManyWithWhereWithoutClienteInput | AgendamentoUpdateManyWithWhereWithoutClienteInput[]
     deleteMany?: AgendamentoScalarWhereInput | AgendamentoScalarWhereInput[]
   }
 
@@ -6313,43 +6313,43 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type AgendamentoCreateWithoutClientesInput = {
+  export type AgendamentoCreateWithoutClienteInput = {
     dataHora: Date | string
     profissional: ProfissionalCreateNestedOneWithoutAgendamentosInput
     servico: ServicoCreateNestedOneWithoutAgendamentosInput
   }
 
-  export type AgendamentoUncheckedCreateWithoutClientesInput = {
+  export type AgendamentoUncheckedCreateWithoutClienteInput = {
     id?: number
     dataHora: Date | string
     profissionalId: number
     servicoId: number
   }
 
-  export type AgendamentoCreateOrConnectWithoutClientesInput = {
+  export type AgendamentoCreateOrConnectWithoutClienteInput = {
     where: AgendamentoWhereUniqueInput
-    create: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput>
+    create: XOR<AgendamentoCreateWithoutClienteInput, AgendamentoUncheckedCreateWithoutClienteInput>
   }
 
-  export type AgendamentoCreateManyClientesInputEnvelope = {
-    data: AgendamentoCreateManyClientesInput | AgendamentoCreateManyClientesInput[]
+  export type AgendamentoCreateManyClienteInputEnvelope = {
+    data: AgendamentoCreateManyClienteInput | AgendamentoCreateManyClienteInput[]
     skipDuplicates?: boolean
   }
 
-  export type AgendamentoUpsertWithWhereUniqueWithoutClientesInput = {
+  export type AgendamentoUpsertWithWhereUniqueWithoutClienteInput = {
     where: AgendamentoWhereUniqueInput
-    update: XOR<AgendamentoUpdateWithoutClientesInput, AgendamentoUncheckedUpdateWithoutClientesInput>
-    create: XOR<AgendamentoCreateWithoutClientesInput, AgendamentoUncheckedCreateWithoutClientesInput>
+    update: XOR<AgendamentoUpdateWithoutClienteInput, AgendamentoUncheckedUpdateWithoutClienteInput>
+    create: XOR<AgendamentoCreateWithoutClienteInput, AgendamentoUncheckedCreateWithoutClienteInput>
   }
 
-  export type AgendamentoUpdateWithWhereUniqueWithoutClientesInput = {
+  export type AgendamentoUpdateWithWhereUniqueWithoutClienteInput = {
     where: AgendamentoWhereUniqueInput
-    data: XOR<AgendamentoUpdateWithoutClientesInput, AgendamentoUncheckedUpdateWithoutClientesInput>
+    data: XOR<AgendamentoUpdateWithoutClienteInput, AgendamentoUncheckedUpdateWithoutClienteInput>
   }
 
-  export type AgendamentoUpdateManyWithWhereWithoutClientesInput = {
+  export type AgendamentoUpdateManyWithWhereWithoutClienteInput = {
     where: AgendamentoScalarWhereInput
-    data: XOR<AgendamentoUpdateManyMutationInput, AgendamentoUncheckedUpdateManyWithoutClientesInput>
+    data: XOR<AgendamentoUpdateManyMutationInput, AgendamentoUncheckedUpdateManyWithoutClienteInput>
   }
 
   export type AgendamentoScalarWhereInput = {
@@ -6365,7 +6365,7 @@ export namespace Prisma {
 
   export type AgendamentoCreateWithoutProfissionalInput = {
     dataHora: Date | string
-    clientes: ClientCreateNestedOneWithoutAgendamentosInput
+    cliente: ClientCreateNestedOneWithoutAgendamentosInput
     servico: ServicoCreateNestedOneWithoutAgendamentosInput
   }
 
@@ -6404,7 +6404,7 @@ export namespace Prisma {
 
   export type AgendamentoCreateWithoutServicoInput = {
     dataHora: Date | string
-    clientes: ClientCreateNestedOneWithoutAgendamentosInput
+    cliente: ClientCreateNestedOneWithoutAgendamentosInput
     profissional: ProfissionalCreateNestedOneWithoutAgendamentosInput
   }
 
@@ -6563,27 +6563,27 @@ export namespace Prisma {
     preco?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type AgendamentoCreateManyClientesInput = {
+  export type AgendamentoCreateManyClienteInput = {
     id?: number
     dataHora: Date | string
     profissionalId: number
     servicoId: number
   }
 
-  export type AgendamentoUpdateWithoutClientesInput = {
+  export type AgendamentoUpdateWithoutClienteInput = {
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
     profissional?: ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput
     servico?: ServicoUpdateOneRequiredWithoutAgendamentosNestedInput
   }
 
-  export type AgendamentoUncheckedUpdateWithoutClientesInput = {
+  export type AgendamentoUncheckedUpdateWithoutClienteInput = {
     id?: IntFieldUpdateOperationsInput | number
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
     profissionalId?: IntFieldUpdateOperationsInput | number
     servicoId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type AgendamentoUncheckedUpdateManyWithoutClientesInput = {
+  export type AgendamentoUncheckedUpdateManyWithoutClienteInput = {
     id?: IntFieldUpdateOperationsInput | number
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
     profissionalId?: IntFieldUpdateOperationsInput | number
@@ -6599,7 +6599,7 @@ export namespace Prisma {
 
   export type AgendamentoUpdateWithoutProfissionalInput = {
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
-    clientes?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
+    cliente?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
     servico?: ServicoUpdateOneRequiredWithoutAgendamentosNestedInput
   }
 
@@ -6626,7 +6626,7 @@ export namespace Prisma {
 
   export type AgendamentoUpdateWithoutServicoInput = {
     dataHora?: DateTimeFieldUpdateOperationsInput | Date | string
-    clientes?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
+    cliente?: ClientUpdateOneRequiredWithoutAgendamentosNestedInput
     profissional?: ProfissionalUpdateOneRequiredWithoutAgendamentosNestedInput
   }
 

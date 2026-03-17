@@ -1,10 +1,10 @@
-import { PrismaClient } from './generated';
+import { PrismaClient } from "./generated";
 const prisma = new PrismaClient();
 
 export class ProfissionalGerenciador {
   async inserir(nome: string, especialidade: string) {
     return await prisma.profissional.create({
-      data: { nome, especialidade }
+      data: { nome, especialidade },
     });
   }
 
@@ -16,7 +16,7 @@ export class ProfissionalGerenciador {
 export class ServicoGerenciador {
   async inserir(descricao: string, preco: number) {
     return await prisma.servico.create({
-      data: { descricao, preco }
+      data: { descricao, preco },
     });
   }
 
@@ -26,19 +26,24 @@ export class ServicoGerenciador {
 }
 
 export class AgendamentoGerenciador {
-  async agendar(clienteId: number, profissionalId: number, servicoId: number, data: string) {
+  async agendar(
+    clienteId: number,
+    profissionalId: number,
+    servicoId: number,
+    data: string,
+  ) {
     return await prisma.agendamento.create({
       data: {
         clienteId,
         profissionalId,
         servicoId,
-        dataHora: new Date(data)
+        dataHora: new Date(data),
       },
-      include: { // Traz os dados relacionados no retorno
+      include: {
         clientes: true,
         profissional: true,
-        servico: true
-      }
+        servico: true,
+      },
     });
   }
 
@@ -47,8 +52,8 @@ export class AgendamentoGerenciador {
       include: {
         clientes: { select: { nome: true } },
         profissional: { select: { nome: true } },
-        servico: { select: { descricao: true, preco: true } }
-      }
+        servico: { select: { descricao: true, preco: true } },
+      },
     });
   }
 }

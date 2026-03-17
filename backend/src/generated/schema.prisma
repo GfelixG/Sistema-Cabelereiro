@@ -40,7 +40,7 @@ model Agendamento {
   profissionalId Int
   servicoId      Int
 
-  clientes     Client       @relation(fields: [clienteId], references: [id])
+  cliente      Client       @relation(fields: [clienteId], references: [id])
   profissional Profissional @relation(fields: [profissionalId], references: [id])
   servico      Servico      @relation(fields: [servicoId], references: [id])
 }
