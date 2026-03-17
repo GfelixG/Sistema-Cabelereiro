@@ -47,6 +47,7 @@ export class AgendamentoGerenciador {
     });
   }
 
+  //relatorio final
   async listarRelatorio() {
     return await prisma.agendamento.findMany({
       include: {
