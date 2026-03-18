@@ -24,6 +24,8 @@ model Profissional {
   nome          String
   especialidade String
   agendamentos  Agendamento[]
+
+  @@map("profissionais")
 }
 
 model Servico {
@@ -31,6 +33,8 @@ model Servico {
   descricao    String
   preco        Float
   agendamentos Agendamento[]
+
+  @@map("servicos")
 }
 
 model Agendamento {
@@ -43,4 +47,6 @@ model Agendamento {
   cliente      Client       @relation(fields: [clienteId], references: [id])
   profissional Profissional @relation(fields: [profissionalId], references: [id])
   servico      Servico      @relation(fields: [servicoId], references: [id])
+
+  @@map("agendamentos")
 }

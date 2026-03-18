@@ -40,7 +40,7 @@ export class AgendamentoGerenciador {
         dataHora: new Date(data),
       },
       include: {
-        clientes: true,
+        cliente: true,
         profissional: true,
         servico: true,
       },
