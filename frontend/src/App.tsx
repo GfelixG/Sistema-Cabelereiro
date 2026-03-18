@@ -66,6 +66,7 @@ function App() {
     | "profissionais"
     | "servicos"
     | "relatorio"
+    | "exibir-cliente"
   >("home");
 
   const [clientes, setClientes] = useState<Cliente[]>([]);
@@ -76,6 +77,7 @@ function App() {
   const [clienteEditandoId, setClienteEditandoId] = useState<number | null>(
     null,
   );
+  const [clienteSelecionado, setClienteSelecionado] = useState<Cliente & { dataCadastro?: string } | null>(null);
 
   const [profissionais, setProfissionais] = useState<Profissional[]>([]);
   const [servicos, setServicos] = useState<Servico[]>([]);
@@ -195,10 +197,8 @@ function App() {
   const exibirCliente = async (id: number) => {
     try {
       const response = await axios.get(`${API_URL}/${id}`);
-      const c = response.data;
-      alert(
-        `Cliente #${c.id}\nNome: ${c.nome}\nTelefone: ${c.telefone}\nE-mail: ${c.email || "Sem e-mail"}\nCadastro: ${new Date(c.dataCadastro).toLocaleString("pt-BR")}`,
-      );
+      setClienteSelecionado(response.data);
+      setTela("exibir-cliente");
     } catch {
       setMensagemErro("Não foi possível exibir este cliente.");
     }
@@ -775,6 +775,58 @@ function App() {
                 )}
               </div>
             </div>
+          </div>
+        )}
+        {tela === "exibir-cliente" && clienteSelecionado && (
+          <div className="bg-white p-8 rounded-3xl shadow-sm max-w-2xl mx-auto border border-slate-100 relative overflow-hidden">
+             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+             
+             <div className="relative pt-16 px-4">
+                <div className="bg-white p-4 rounded-3xl inline-flex shadow-lg mb-6 border-4 border-white">
+                  <UserCircle size={64} className="text-indigo-600" />
+                </div>
+                
+                <h2 className="text-3xl font-black text-slate-800 mb-2">
+                  {clienteSelecionado.nome}
+                </h2>
+                
+                <p className="text-slate-500 font-medium mb-8 flex items-center gap-2">
+                  <span className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">
+                    ID #{clienteSelecionado.id}
+                  </span>
+                  {clienteSelecionado.dataCadastro && (
+                     <span className="text-sm">
+                       Membro desde {new Date(clienteSelecionado.dataCadastro).toLocaleDateString('pt-BR')}
+                     </span>
+                  )}
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                   <div>
+                     <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Telefone</p>
+                     <p className="text-lg font-semibold text-slate-700">{clienteSelecionado.telefone}</p>
+                   </div>
+                   <div>
+                     <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">E-mail</p>
+                     <p className="text-lg font-semibold text-slate-700">{clienteSelecionado.email || "Não informado"}</p>
+                   </div>
+                </div>
+
+                <div className="mt-8 flex gap-4">
+                  <button 
+                    onClick={() => setTela("listar")}
+                    className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl transition flex items-center justify-center gap-2"
+                  >
+                    <ArrowLeft size={20} /> Voltar à Lista
+                  </button>
+                  <button 
+                    onClick={() => editarCliente(clienteSelecionado)}
+                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-indigo-100 transition flex items-center justify-center gap-2"
+                  >
+                    <Pencil size={20} /> Editar
+                  </button>
+                </div>
+             </div>
           </div>
         )}
       </div>
