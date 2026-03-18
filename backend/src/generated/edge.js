@@ -164,7 +164,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\bruno\\Desktop\\Projeto-BD\\Sistema-Cabelereiro\\backend\\src\\generated",
+      "value": "C:\\Users\\gabri\\OneDrive\\Documentos\\Sistema-Cabelereiro\\backend\\src\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -178,7 +178,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\bruno\\Desktop\\Projeto-BD\\Sistema-Cabelereiro\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\gabri\\OneDrive\\Documentos\\Sistema-Cabelereiro\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

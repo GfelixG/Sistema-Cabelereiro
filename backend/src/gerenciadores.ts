@@ -51,10 +51,16 @@ export class AgendamentoGerenciador {
   async listarRelatorio() {
     return await prisma.agendamento.findMany({
       include: {
-        clientes: { select: { nome: true } },
+        cliente: { select: { nome: true } },
         profissional: { select: { nome: true } },
         servico: { select: { descricao: true, preco: true } },
       },
+    });
+  }
+
+  async cancelar(id: number) {
+    return await prisma.agendamento.delete({
+      where: { id },
     });
   }
 }

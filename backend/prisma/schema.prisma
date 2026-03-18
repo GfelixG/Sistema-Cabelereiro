@@ -8,45 +8,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Client {
-  id           Int           @id @default(autoincrement())
-  nome         String        @db.VarChar(100)
-  telefone     String        @unique @db.VarChar(15)
-  email        String?       @unique @db.VarChar(100)
-  dataCadastro DateTime      @default(now()) @map("data_cadastro") @db.DateTime(0)
-  agendamentos Agendamento[]
+model Clientes {
+  id           Int            @id @default(autoincrement())
+  nome         String         @db.VarChar(100)
+  telefone     String         @unique @db.VarChar(15)
+  email        String?        @unique @db.VarChar(100)
+  dataCadastro DateTime       @default(now()) @map("data_cadastro") @db.DateTime(0)
+  agendamentos Agendamentos[]
 
   @@map("clientes")
 }
 
-model Profissional {
-  id            Int           @id @default(autoincrement())
+model Profissionais {
+  id            Int            @id @default(autoincrement())
   nome          String
   especialidade String
-  agendamentos  Agendamento[]
+  agendamentos  Agendamentos[]
 
   @@map("profissionais")
 }
 
-model Servico {
-  id           Int           @id @default(autoincrement())
+model Servicos {
+  id           Int            @id @default(autoincrement())
   descricao    String
   preco        Float
-  agendamentos Agendamento[]
+  agendamentos Agendamentos[]
 
   @@map("servicos")
 }
 
-model Agendamento {
+model Agendamentos {
   id             Int      @id @default(autoincrement())
   dataHora       DateTime
   clienteId      Int
   profissionalId Int
   servicoId      Int
 
-  cliente      Client       @relation(fields: [clienteId], references: [id])
-  profissional Profissional @relation(fields: [profissionalId], references: [id])
-  servico      Servico      @relation(fields: [servicoId], references: [id])
+  cliente      Clientes      @relation(fields: [clienteId], references: [id])
+  profissional Profissionais @relation(fields: [profissionalId], references: [id])
+  servico      Servicos      @relation(fields: [servicoId], references: [id])
 
   @@map("agendamentos")
 }

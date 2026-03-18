@@ -167,6 +167,20 @@ app.post("/agendamentos", async (req, res) => {
   }
 });
 
+app.delete("/agendamentos/:id", async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    await agendamentoGerenciador.cancelar(id);
+    res.status(204).send();
+  } catch (error: any) {
+    if (error?.code === "P2025") {
+      return res.status(404).json({ erro: "Agendamento não encontrado." });
+    }
+    console.error("Erro ao cancelar agendamento:", error);
+    res.status(500).json({ erro: "Erro interno ao tentar cancelar o agendamento." });
+  }
+});
+
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);

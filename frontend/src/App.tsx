@@ -265,6 +265,22 @@ function App() {
     }
   };
 
+  const handleCancelarAgendamento = async (id: number) => {
+    if (window.confirm("Deseja realmente cancelar este agendamento?")) {
+      try {
+        await axios.delete(`${API_URL_AGENDAMENTOS}/${id}`);
+        setAgendamentos((prev) => prev.filter((a) => a.id !== id));
+        alert("Agendamento cancelado com sucesso!");
+      } catch (error: any) {
+        console.error("Erro ao cancelar agendamento:", error);
+        alert(
+          error.response?.data?.erro ||
+            "Não foi possível cancelar o agendamento.",
+        );
+      }
+    }
+  };
+
   const TelaHome = () => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
       <button
@@ -592,10 +608,10 @@ function App() {
                 >
                   <div>
                     <p className="font-bold text-lg">
-                      {a.clientes.nome} com {a.profissional.nome}
+                      {a.cliente?.nome} com {a.profissional?.nome}
                     </p>
                     <p className="text-slate-500 text-sm capitalize">
-                      {a.servico.descricao} (R$ {a.servico.preco})
+                      {a.servico?.descricao} (R$ {a.servico?.preco})
                     </p>
                   </div>
                   <div className="text-right">
@@ -603,6 +619,13 @@ function App() {
                       <Clock size={14} />{" "}
                       {new Date(a.dataHora).toLocaleString("pt-BR")}
                     </div>
+                    <button
+                      onClick={() => handleCancelarAgendamento(a.id)}
+                      className="mt-2 text-rose-500 hover:text-rose-700 font-medium text-sm flex items-center justify-end gap-1 w-full transition"
+                      title="Cancelar agendamento"
+                    >
+                      <Trash2 size={16} /> Cancelar
+                    </button>
                   </div>
                 </div>
               ))}
