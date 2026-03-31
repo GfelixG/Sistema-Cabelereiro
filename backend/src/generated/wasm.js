@@ -93,32 +93,66 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.ClientScalarFieldEnum = {
+exports.Prisma.ClientesScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   telefone: 'telefone',
   email: 'email',
-  dataCadastro: 'dataCadastro'
+  dataCadastro: 'dataCadastro',
+  isFlamengo: 'isFlamengo',
+  assisteOP: 'assisteOP',
+  cidadeNascimento: 'cidadeNascimento'
 };
 
-exports.Prisma.ProfissionalScalarFieldEnum = {
+exports.Prisma.ProfissionaisScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   especialidade: 'especialidade'
 };
 
-exports.Prisma.ServicoScalarFieldEnum = {
+exports.Prisma.ServicosScalarFieldEnum = {
   id: 'id',
   descricao: 'descricao',
   preco: 'preco'
 };
 
-exports.Prisma.AgendamentoScalarFieldEnum = {
+exports.Prisma.AgendamentosScalarFieldEnum = {
   id: 'id',
   dataHora: 'dataHora',
   clienteId: 'clienteId',
-  profissionalId: 'profissionalId',
-  servicoId: 'servicoId'
+  profissionalId: 'profissionalId'
+};
+
+exports.Prisma.VendedoresScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome'
+};
+
+exports.Prisma.ProdutosScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  preco: 'preco',
+  categoria: 'categoria',
+  fabricadoEmMari: 'fabricadoEmMari',
+  estoque: 'estoque'
+};
+
+exports.Prisma.VendasScalarFieldEnum = {
+  id: 'id',
+  clienteId: 'clienteId',
+  vendedorId: 'vendedorId',
+  dataHora: 'dataHora',
+  formaPagamento: 'formaPagamento',
+  statusPagamento: 'statusPagamento',
+  valorTotal: 'valorTotal'
+};
+
+exports.Prisma.ItensVendaScalarFieldEnum = {
+  id: 'id',
+  vendaId: 'vendaId',
+  produtoId: 'produtoId',
+  quantidade: 'quantidade',
+  precoUnitario: 'precoUnitario'
 };
 
 exports.Prisma.SortOrder = {
@@ -131,27 +165,46 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
-exports.Prisma.ClientOrderByRelevanceFieldEnum = {
+exports.Prisma.ClientesOrderByRelevanceFieldEnum = {
   nome: 'nome',
   telefone: 'telefone',
-  email: 'email'
+  email: 'email',
+  cidadeNascimento: 'cidadeNascimento'
 };
 
-exports.Prisma.ProfissionalOrderByRelevanceFieldEnum = {
+exports.Prisma.ProfissionaisOrderByRelevanceFieldEnum = {
   nome: 'nome',
   especialidade: 'especialidade'
 };
 
-exports.Prisma.ServicoOrderByRelevanceFieldEnum = {
+exports.Prisma.ServicosOrderByRelevanceFieldEnum = {
   descricao: 'descricao'
+};
+
+exports.Prisma.VendedoresOrderByRelevanceFieldEnum = {
+  nome: 'nome'
+};
+
+exports.Prisma.ProdutosOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  categoria: 'categoria'
+};
+
+exports.Prisma.VendasOrderByRelevanceFieldEnum = {
+  formaPagamento: 'formaPagamento',
+  statusPagamento: 'statusPagamento'
 };
 
 
 exports.Prisma.ModelName = {
-  Client: 'Client',
-  Profissional: 'Profissional',
-  Servico: 'Servico',
-  Agendamento: 'Agendamento'
+  Clientes: 'Clientes',
+  Profissionais: 'Profissionais',
+  Servicos: 'Servicos',
+  Agendamentos: 'Agendamentos',
+  Vendedores: 'Vendedores',
+  Produtos: 'Produtos',
+  Vendas: 'Vendas',
+  ItensVenda: 'ItensVenda'
 };
 /**
  * Create the Client
@@ -201,13 +254,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Client {\n  id           Int           @id @default(autoincrement())\n  nome         String        @db.VarChar(100)\n  telefone     String        @unique @db.VarChar(15)\n  email        String?       @unique @db.VarChar(100)\n  dataCadastro DateTime      @default(now()) @map(\"data_cadastro\") @db.DateTime(0)\n  agendamentos Agendamento[]\n\n  @@map(\"clientes\")\n}\n\nmodel Profissional {\n  id            Int           @id @default(autoincrement())\n  nome          String\n  especialidade String\n  agendamentos  Agendamento[]\n\n  @@map(\"profissionais\")\n}\n\nmodel Servico {\n  id           Int           @id @default(autoincrement())\n  descricao    String\n  preco        Float\n  agendamentos Agendamento[]\n\n  @@map(\"servicos\")\n}\n\nmodel Agendamento {\n  id             Int      @id @default(autoincrement())\n  dataHora       DateTime\n  clienteId      Int\n  profissionalId Int\n  servicoId      Int\n\n  cliente      Client       @relation(fields: [clienteId], references: [id])\n  profissional Profissional @relation(fields: [profissionalId], references: [id])\n  servico      Servico      @relation(fields: [servicoId], references: [id])\n\n  @@map(\"agendamentos\")\n}\n",
-  "inlineSchemaHash": "ac0761877c1def25f3d7275bca0d20ed172faaa00b3d2408c0aec8f9dd95c99e",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Clientes {\n  id           Int      @id @default(autoincrement())\n  nome         String   @db.VarChar(100)\n  telefone     String   @unique @db.VarChar(15)\n  email        String?  @unique @db.VarChar(100)\n  dataCadastro DateTime @default(now()) @map(\"data_cadastro\") @db.DateTime(0)\n\n  isFlamengo       Boolean @default(false) @map(\"is_flamengo\")\n  assisteOP        Boolean @default(false) @map(\"assiste_op\")\n  cidadeNascimento String? @map(\"cidade_nascimento\") @db.VarChar(100)\n\n  agendamentos Agendamentos[]\n  vendas       Vendas[]\n\n  @@map(\"clientes\")\n}\n\nmodel Profissionais {\n  id            Int            @id @default(autoincrement())\n  nome          String\n  especialidade String\n  agendamentos  Agendamentos[]\n\n  @@map(\"profissionais\")\n}\n\nmodel Servicos {\n  id           Int            @id @default(autoincrement())\n  descricao    String\n  preco        Float\n  agendamentos Agendamentos[] @relation(\"AgendamentoServicos\")\n\n  @@map(\"servicos\")\n}\n\nmodel Agendamentos {\n  id             Int      @id @default(autoincrement())\n  dataHora       DateTime\n  clienteId      Int\n  profissionalId Int\n\n  cliente      Clientes      @relation(fields: [clienteId], references: [id])\n  profissional Profissionais @relation(fields: [profissionalId], references: [id])\n  servicos     Servicos[]    @relation(\"AgendamentoServicos\")\n\n  @@map(\"agendamentos\")\n}\n\nmodel Vendedores {\n  id     Int      @id @default(autoincrement())\n  nome   String   @db.VarChar(100)\n  vendas Vendas[]\n\n  @@map(\"vendedores\")\n}\n\nmodel Produtos {\n  id              Int          @id @default(autoincrement())\n  nome            String       @db.VarChar(100)\n  preco           Float\n  categoria       String       @db.VarChar(100)\n  fabricadoEmMari Boolean      @default(false) @map(\"fabricado_em_mari\")\n  estoque         Int          @default(0)\n  itensVenda      ItensVenda[]\n\n  @@index([nome])\n  @@index([categoria])\n  @@map(\"produtos\")\n}\n\nmodel Vendas {\n  id              Int      @id @default(autoincrement())\n  clienteId       Int      @map(\"cliente_id\")\n  vendedorId      Int      @map(\"vendedor_id\")\n  dataHora        DateTime @default(now()) @map(\"data_hora\")\n  formaPagamento  String   @map(\"forma_pagamento\") @db.VarChar(50)\n  statusPagamento String   @default(\"Pendente\") @map(\"status_pagamento\") @db.VarChar(50)\n  valorTotal      Float    @map(\"valor_total\")\n\n  cliente  Clientes     @relation(fields: [clienteId], references: [id])\n  vendedor Vendedores   @relation(fields: [vendedorId], references: [id])\n  itens    ItensVenda[]\n\n  @@map(\"vendas\")\n}\n\nmodel ItensVenda {\n  id            Int   @id @default(autoincrement())\n  vendaId       Int   @map(\"venda_id\")\n  produtoId     Int   @map(\"produto_id\")\n  quantidade    Int\n  precoUnitario Float @map(\"preco_unitario\")\n\n  venda   Vendas   @relation(fields: [vendaId], references: [id], onDelete: Cascade)\n  produto Produtos @relation(fields: [produtoId], references: [id])\n\n  @@map(\"itens_venda\")\n}\n",
+  "inlineSchemaHash": "10a96e0910b2b47dba9499d47b25b37409e67166808455657cb3313454b31478",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Client\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dataCadastro\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"data_cadastro\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToClient\"}],\"dbName\":\"clientes\"},\"Profissional\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"especialidade\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToProfissional\"}],\"dbName\":\"profissionais\"},\"Servico\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamento\",\"relationName\":\"AgendamentoToServico\"}],\"dbName\":\"servicos\"},\"Agendamento\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dataHora\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clienteId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"profissionalId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"servicoId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"cliente\",\"kind\":\"object\",\"type\":\"Client\",\"relationName\":\"AgendamentoToClient\"},{\"name\":\"profissional\",\"kind\":\"object\",\"type\":\"Profissional\",\"relationName\":\"AgendamentoToProfissional\"},{\"name\":\"servico\",\"kind\":\"object\",\"type\":\"Servico\",\"relationName\":\"AgendamentoToServico\"}],\"dbName\":\"agendamentos\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Clientes\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"telefone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"dataCadastro\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"data_cadastro\"},{\"name\":\"isFlamengo\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"is_flamengo\"},{\"name\":\"assisteOP\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"assiste_op\"},{\"name\":\"cidadeNascimento\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"cidade_nascimento\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamentos\",\"relationName\":\"AgendamentosToClientes\"},{\"name\":\"vendas\",\"kind\":\"object\",\"type\":\"Vendas\",\"relationName\":\"ClientesToVendas\"}],\"dbName\":\"clientes\"},\"Profissionais\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"especialidade\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamentos\",\"relationName\":\"AgendamentosToProfissionais\"}],\"dbName\":\"profissionais\"},\"Servicos\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"descricao\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"Agendamentos\",\"relationName\":\"AgendamentoServicos\"}],\"dbName\":\"servicos\"},\"Agendamentos\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dataHora\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clienteId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"profissionalId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"cliente\",\"kind\":\"object\",\"type\":\"Clientes\",\"relationName\":\"AgendamentosToClientes\"},{\"name\":\"profissional\",\"kind\":\"object\",\"type\":\"Profissionais\",\"relationName\":\"AgendamentosToProfissionais\"},{\"name\":\"servicos\",\"kind\":\"object\",\"type\":\"Servicos\",\"relationName\":\"AgendamentoServicos\"}],\"dbName\":\"agendamentos\"},\"Vendedores\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"vendas\",\"kind\":\"object\",\"type\":\"Vendas\",\"relationName\":\"VendasToVendedores\"}],\"dbName\":\"vendedores\"},\"Produtos\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"nome\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"preco\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"categoria\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fabricadoEmMari\",\"kind\":\"scalar\",\"type\":\"Boolean\",\"dbName\":\"fabricado_em_mari\"},{\"name\":\"estoque\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"itensVenda\",\"kind\":\"object\",\"type\":\"ItensVenda\",\"relationName\":\"ItensVendaToProdutos\"}],\"dbName\":\"produtos\"},\"Vendas\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"clienteId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"cliente_id\"},{\"name\":\"vendedorId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"vendedor_id\"},{\"name\":\"dataHora\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"data_hora\"},{\"name\":\"formaPagamento\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"forma_pagamento\"},{\"name\":\"statusPagamento\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"status_pagamento\"},{\"name\":\"valorTotal\",\"kind\":\"scalar\",\"type\":\"Float\",\"dbName\":\"valor_total\"},{\"name\":\"cliente\",\"kind\":\"object\",\"type\":\"Clientes\",\"relationName\":\"ClientesToVendas\"},{\"name\":\"vendedor\",\"kind\":\"object\",\"type\":\"Vendedores\",\"relationName\":\"VendasToVendedores\"},{\"name\":\"itens\",\"kind\":\"object\",\"type\":\"ItensVenda\",\"relationName\":\"ItensVendaToVendas\"}],\"dbName\":\"vendas\"},\"ItensVenda\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"vendaId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"venda_id\"},{\"name\":\"produtoId\",\"kind\":\"scalar\",\"type\":\"Int\",\"dbName\":\"produto_id\"},{\"name\":\"quantidade\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"precoUnitario\",\"kind\":\"scalar\",\"type\":\"Float\",\"dbName\":\"preco_unitario\"},{\"name\":\"venda\",\"kind\":\"object\",\"type\":\"Vendas\",\"relationName\":\"ItensVendaToVendas\"},{\"name\":\"produto\",\"kind\":\"object\",\"type\":\"Produtos\",\"relationName\":\"ItensVendaToProdutos\"}],\"dbName\":\"itens_venda\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

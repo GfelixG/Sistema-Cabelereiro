@@ -9,12 +9,18 @@ datasource db {
 }
 
 model Clientes {
-  id           Int            @id @default(autoincrement())
-  nome         String         @db.VarChar(100)
-  telefone     String         @unique @db.VarChar(15)
-  email        String?        @unique @db.VarChar(100)
-  dataCadastro DateTime       @default(now()) @map("data_cadastro") @db.DateTime(0)
-  agendamentos Agendamentos[]
+  id               Int            @id @default(autoincrement())
+  nome             String         @db.VarChar(100)
+  telefone         String         @unique @db.VarChar(15)
+  email            String?        @unique @db.VarChar(100)
+  dataCadastro     DateTime       @default(now()) @map("data_cadastro") @db.DateTime(0)
+  
+  isFlamengo       Boolean        @default(false) @map("is_flamengo")
+  assisteOP        Boolean        @default(false) @map("assiste_op")
+  cidadeNascimento String?        @map("cidade_nascimento") @db.VarChar(100)
+
+  agendamentos     Agendamentos[]
+  vendas           Vendas[]
 
   @@map("clientes")
 }
@@ -32,7 +38,7 @@ model Servicos {
   id           Int            @id @default(autoincrement())
   descricao    String
   preco        Float
-  agendamentos Agendamentos[]
+  agendamentos Agendamentos[] @relation("AgendamentoServicos")
 
   @@map("servicos")
 }
@@ -42,11 +48,61 @@ model Agendamentos {
   dataHora       DateTime
   clienteId      Int
   profissionalId Int
-  servicoId      Int
 
   cliente      Clientes      @relation(fields: [clienteId], references: [id])
   profissional Profissionais @relation(fields: [profissionalId], references: [id])
-  servico      Servicos      @relation(fields: [servicoId], references: [id])
+  servicos     Servicos[]    @relation("AgendamentoServicos")
 
   @@map("agendamentos")
+}
+
+model Vendedores {
+  id        Int      @id @default(autoincrement())
+  nome      String   @db.VarChar(100)
+  vendas    Vendas[]
+
+  @@map("vendedores")
+}
+
+model Produtos {
+  id               Int          @id @default(autoincrement())
+  nome             String       @db.VarChar(100)
+  preco            Float
+  categoria        String       @db.VarChar(100)
+  fabricadoEmMari  Boolean      @default(false) @map("fabricado_em_mari")
+  estoque          Int          @default(0)
+  itensVenda       ItensVenda[]
+
+  @@index([nome])
+  @@index([categoria])
+  @@map("produtos")
+}
+
+model Vendas {
+  id              Int          @id @default(autoincrement())
+  clienteId       Int          @map("cliente_id")
+  vendedorId      Int          @map("vendedor_id")
+  dataHora        DateTime     @default(now()) @map("data_hora")
+  formaPagamento  String       @map("forma_pagamento") @db.VarChar(50)
+  statusPagamento String       @default("Pendente") @map("status_pagamento") @db.VarChar(50)
+  valorTotal      Float        @map("valor_total")
+
+  cliente         Clientes     @relation(fields: [clienteId], references: [id])
+  vendedor        Vendedores   @relation(fields: [vendedorId], references: [id])
+  itens           ItensVenda[]
+
+  @@map("vendas")
+}
+
+model ItensVenda {
+  id            Int      @id @default(autoincrement())
+  vendaId       Int      @map("venda_id")
+  produtoId     Int      @map("produto_id")
+  quantidade    Int
+  precoUnitario Float    @map("preco_unitario")
+
+  venda         Vendas   @relation(fields: [vendaId], references: [id], onDelete: Cascade)
+  produto       Produtos @relation(fields: [produtoId], references: [id])
+
+  @@map("itens_venda")
 }

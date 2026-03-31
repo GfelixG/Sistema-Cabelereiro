@@ -121,32 +121,66 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.ClientScalarFieldEnum = {
+exports.Prisma.ClientesScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   telefone: 'telefone',
   email: 'email',
-  dataCadastro: 'dataCadastro'
+  dataCadastro: 'dataCadastro',
+  isFlamengo: 'isFlamengo',
+  assisteOP: 'assisteOP',
+  cidadeNascimento: 'cidadeNascimento'
 };
 
-exports.Prisma.ProfissionalScalarFieldEnum = {
+exports.Prisma.ProfissionaisScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   especialidade: 'especialidade'
 };
 
-exports.Prisma.ServicoScalarFieldEnum = {
+exports.Prisma.ServicosScalarFieldEnum = {
   id: 'id',
   descricao: 'descricao',
   preco: 'preco'
 };
 
-exports.Prisma.AgendamentoScalarFieldEnum = {
+exports.Prisma.AgendamentosScalarFieldEnum = {
   id: 'id',
   dataHora: 'dataHora',
   clienteId: 'clienteId',
-  profissionalId: 'profissionalId',
-  servicoId: 'servicoId'
+  profissionalId: 'profissionalId'
+};
+
+exports.Prisma.VendedoresScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome'
+};
+
+exports.Prisma.ProdutosScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  preco: 'preco',
+  categoria: 'categoria',
+  fabricadoEmMari: 'fabricadoEmMari',
+  estoque: 'estoque'
+};
+
+exports.Prisma.VendasScalarFieldEnum = {
+  id: 'id',
+  clienteId: 'clienteId',
+  vendedorId: 'vendedorId',
+  dataHora: 'dataHora',
+  formaPagamento: 'formaPagamento',
+  statusPagamento: 'statusPagamento',
+  valorTotal: 'valorTotal'
+};
+
+exports.Prisma.ItensVendaScalarFieldEnum = {
+  id: 'id',
+  vendaId: 'vendaId',
+  produtoId: 'produtoId',
+  quantidade: 'quantidade',
+  precoUnitario: 'precoUnitario'
 };
 
 exports.Prisma.SortOrder = {
@@ -159,27 +193,46 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
-exports.Prisma.ClientOrderByRelevanceFieldEnum = {
+exports.Prisma.ClientesOrderByRelevanceFieldEnum = {
   nome: 'nome',
   telefone: 'telefone',
-  email: 'email'
+  email: 'email',
+  cidadeNascimento: 'cidadeNascimento'
 };
 
-exports.Prisma.ProfissionalOrderByRelevanceFieldEnum = {
+exports.Prisma.ProfissionaisOrderByRelevanceFieldEnum = {
   nome: 'nome',
   especialidade: 'especialidade'
 };
 
-exports.Prisma.ServicoOrderByRelevanceFieldEnum = {
+exports.Prisma.ServicosOrderByRelevanceFieldEnum = {
   descricao: 'descricao'
+};
+
+exports.Prisma.VendedoresOrderByRelevanceFieldEnum = {
+  nome: 'nome'
+};
+
+exports.Prisma.ProdutosOrderByRelevanceFieldEnum = {
+  nome: 'nome',
+  categoria: 'categoria'
+};
+
+exports.Prisma.VendasOrderByRelevanceFieldEnum = {
+  formaPagamento: 'formaPagamento',
+  statusPagamento: 'statusPagamento'
 };
 
 
 exports.Prisma.ModelName = {
-  Client: 'Client',
-  Profissional: 'Profissional',
-  Servico: 'Servico',
-  Agendamento: 'Agendamento'
+  Clientes: 'Clientes',
+  Profissionais: 'Profissionais',
+  Servicos: 'Servicos',
+  Agendamentos: 'Agendamentos',
+  Vendedores: 'Vendedores',
+  Produtos: 'Produtos',
+  Vendas: 'Vendas',
+  ItensVenda: 'ItensVenda'
 };
 
 /**
